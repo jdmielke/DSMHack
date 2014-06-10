@@ -1,0 +1,13 @@
+body {
+  background: url(../img/dsm.jpg) no-repeat center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.page-header{
+	border-bottom: 0px solid #eee !important;
+}
+.title-div{
+	float: right;
+}
