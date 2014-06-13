@@ -1,6 +1,16 @@
 var express = require('express'),
   nodemailer = require("nodemailer");
 
+var MongoClient = require('mongodb').MongoClient
+    , format = require('util').format;
+
+var db = MongoClient.connect('mongodb://127.0.0.1:27017/chrysalis', function(err, db) {
+    if(err)
+        throw err;
+    console.log("connected to the mongoDB !");
+    myCollection = db.collection('images');
+});
+
 var app = express();
 
 // configure Express
@@ -17,10 +27,18 @@ app.configure(function() {
   app.use(express.logger());
 });
 
+app.get('/images', function(req, res){
+  var cursor = myCollection.find({"name":"blah"});
+  cursor.each(function(err, doc) {
+    if(err)
+        throw err;
+    if(doc==null)
+        return;
 
-/*app.get('/', function(req, res){
-  res.render('index', {});
-});*/
+    console.log("document find:");
+    console.log(doc.name);
+  });
+});
 
 app.listen(8080, function() {
   console.log("Application started on port 8080!");
