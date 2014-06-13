@@ -16,6 +16,10 @@ app.config(function($routeProvider) {
 		controller: "CardHoriz",
 		templateUrl: "pages/card-horiz.html"
 	})
+	.when("/admin/messages", {
+		controller: "AdminMessages",
+		templateUrl: "pages/adminMessages.html"
+	})
 	.otherwise({
 		redirectTo:  "/"
 	});
@@ -72,4 +76,16 @@ app.config(function($routeProvider) {
 	function($scope, Card) {
 		$scope.card = Card;
 	}
-]);
+])
+
+.controller("AdminMessages", ["$scope", "MessageList",
+	function($scope, MessageList) {
+		$scope.tag = "";
+		$scope.tags = [
+			"",
+			"Anniversary",
+			"Birthday"
+		];
+		$scope.messages = MessageList.query();
+	}]
+);

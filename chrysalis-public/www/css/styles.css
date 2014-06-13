@@ -214,9 +214,20 @@ form input {
   @media all and (min-width: 30em) {
     .message {
       width: 50%; } }
-  .message input {
+  .message input[type="text"] {
+    float: none;
+    padding: 0.25em; }
+  .message input[type="checkbox"] {
     position: absolute;
     left: 0; }
+
+.message-controls {
+  border-top: 1px solid #c2c2c2;
+  margin-top: 0.5em;
+  padding-top: 0.5em; }
+  .message-controls strong {
+    font-size: 115%;
+    margin-right: 1em; }
 
 .custom-message-wrapper {
   zoom: 1; }
@@ -369,3 +380,16 @@ a.submit {
   .admin-body .button {
     width: auto;
     margin: 0 auto; }
+
+.controls {
+  margin-bottom: 2em; }
+  .controls label {
+    font-size: 115%;
+    color: #5e6300; }
+  .controls a {
+    color: #fcb31c;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-size: 105%; }
+    .controls a:hover, .controls a:focus {
+      color: #e29903; }

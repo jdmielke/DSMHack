@@ -4,7 +4,7 @@
 		<p>To:</p>
 		<form>
 			<label for="first-name">First Name</label>
-			<input type="text" placeholder="First Name" id="first-name"  ng-model="firstname">
+			<input type="text" placeholder="First Name" id="first-name"  ng-model="to">
 			<label for="last-name">Last Name</label>
 			<input type="text" placeholder="Last Name" id="last-name"> 
 			<label for="email">Email</label>
@@ -15,7 +15,7 @@
 		<p>From:</p>
 		<form>
 			<label for="first-name">First Name</label>
-			<input type="text" placeholder="First Name" id="first-name">
+			<input type="text" placeholder="First Name" id="first-name" ng-model="from">
 			<label for="last-name">Last Name</label>
 			<input type="text" placeholder="Last Name" id="last-name"> 
 			<label for="email">Email</label>
@@ -28,7 +28,7 @@
 <div class="card">
 	<img ng-src="{{card.image.url}}" />
 	<div class="message">
-		<h2>{{firstname}},</h2>
+		<h2>{{to}},</h2>
 		<p>{{card.messageText}}</p>
 		<h2 class="bottom-heading">From</h2>
 	</div>

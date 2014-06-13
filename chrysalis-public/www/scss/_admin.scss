@@ -31,3 +31,22 @@
 	}
 
 }
+
+.controls {
+	margin-bottom: 2em;
+	label {
+		font-size: 115%;
+		color: $darkest-green;
+	}
+	a {
+		color: $orange;
+		text-decoration: none;
+		padding: 0.5em 1em;
+		font-size: 105%;
+
+		&:hover,
+		&:focus {
+			color: darken($orange, 10%);
+		}
+	}
+}

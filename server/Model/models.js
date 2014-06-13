@@ -1,18 +1,20 @@
 module.exports = function(mongoose) {
 	var tag = mongoose.Schema({
-	  name: String
+		name: String
 	});
+	
 	var image = mongoose.Schema({
-	  name: String,
-	  data: String,
-	  tags: [tag],
-	  artist: String,
-	  age: Number,
-	  orientation: String
+		name: String,
+		data: String,
+		tags: [tag],
+		artist: String,
+		age: Number,
+		orientation: String
 	});
+
 	var message = mongoose.Schema({
-	  text: String,
-	  tags: [tag]
+		text: String,
+		tags: [tag]
 	});
 	var card = mongoose.Schema({
 	  image: [image],
@@ -31,7 +33,7 @@ module.exports = function(mongoose) {
 		tag : mongoose.model("tag", tag),
 		image : mongoose.model("image", image),
 		message : mongoose.model("message", message),
-		card : mongoose.model("card", card)
+		card: mongoose.model("card", card)
 	};
 
 	return models;
