@@ -23,7 +23,7 @@ var AdminModel = require("./server/model/Admin")(mongoose);
 
 var transport = nodemailer.createTransport("Gmail",{
     auth: {
-        user: "chrysalisecard@gmail",
+        user: "chrysalisecard@gmail.com",
         pass: "dummypassword"
     }
 });
@@ -139,29 +139,37 @@ app.listen(8080, function() {
 });
 
 app.get('/api/cards/send/:id', function(req, res){
-  var senderName = findById(req.params.id).from;
-  var senderEmail = findById(req.params.id).fromEmail;
-  var toEmail = findById(req.params.id).toEmail;
- 
+  models.card.findById(req.params.id, function (err, data) {
+    if (!err) {
+            
+      var senderName = data.from;
+      var senderEmail = data.fromEmail;
+      var toEmail = data.toEmail;
 
 
-  var subject = senderName + " has made a donation to Chrysalis in your name!";
-  var text = "Here is the link to your ecard:";
 
-  var mailOptions = {
-    from: senderEmail,
-    to: toEmail,
-    subject: subject,
-    text: text
+      var subject = senderName + " has made a donation to Chrysalis in your name!";
+      var text = "Here is the link to your ecard:";
+
+      var mailOptions = {
+        from: senderEmail,
+        to: toEmail,
+        cc: senderEmail,
+        subject: subject,
+        text: text
+        }
+
+        transport.sendMail(mailOptions, function(error, response){
+          if(error){
+            res.statusCode = 500;
+            res.end();
+          }else{
+            res.end();
+          }
+        });;
+   } else {
+    return console.error(err);
   }
-
-  transport.sendMail(mailOptions, function(error, response){
-    if(error){
-      res.statusCode = 500;
-      res.end();
-    }else{
-      res.end();
-    }
   });
 });
 
