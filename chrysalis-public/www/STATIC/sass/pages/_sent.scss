@@ -1,0 +1,33 @@
+.sent {
+	h1 {
+		color: $green;
+		text-align: center;
+		width: 600px;
+		margin: 0 auto;
+		padding-top: 50px;
+		span {
+			padding-top: 30px;
+			display: block;
+		}
+		&:before {
+			content: '';
+			background: url(../img/sent.jpg) no-repeat top left;
+			width: 186px;
+			height: 90px;
+			display: block;
+			float: left;
+		}
+	}
+}
+
+@media screen and (max-width:650px) {
+	.sent {
+		h1 {
+			width: 100%;
+			&:before {
+				float: none;
+				margin: 0 auto;
+			}
+		}
+	}
+}
