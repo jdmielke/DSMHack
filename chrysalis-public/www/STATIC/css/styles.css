@@ -715,3 +715,37 @@ form.donation div {
     margin: 0 0 20px 0;
   }
 }
+/* line 2, ../sass/pages/_sent.scss */
+.sent h1 {
+  color: #b0ba25;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+/* line 8, ../sass/pages/_sent.scss */
+.sent h1 span {
+  padding-top: 30px;
+  display: block;
+}
+/* line 12, ../sass/pages/_sent.scss */
+.sent h1:before {
+  content: '';
+  background: url(../img/sent.jpg) no-repeat top left;
+  width: 186px;
+  height: 90px;
+  display: block;
+  float: left;
+}
+
+@media screen and (max-width: 650px) {
+  /* line 25, ../sass/pages/_sent.scss */
+  .sent h1 {
+    width: 100%;
+  }
+  /* line 27, ../sass/pages/_sent.scss */
+  .sent h1:before {
+    float: none;
+    margin: 0 auto;
+  }
+}
