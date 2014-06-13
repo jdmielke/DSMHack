@@ -51,9 +51,9 @@ app.config(function($routeProvider) {
 .controller("IndexController", ["$scope", "ImageList", "Card", "Tags", "$location",
 	function($scope, ImageList, Card, Tags, $location) {
 		$scope.imageList = ImageList.query();
-		$scope.tag = "";
-		$scope.tags = Tags.query();
 		$scope.card = Card;
+		$scope.card.tag = "";
+		$scope.tags = Tags.query();
 
 		$scope.selectImage = function(image) {
 			$scope.card.image = image;
@@ -63,13 +63,13 @@ app.config(function($routeProvider) {
 		$scope.containsTag = function(tag) {
 			return function(image) {
 				var contains = false;
-				
-				if ($scope.tag == "") {
+
+				if ($scope.card.tag == "") {
 					return true;
 				}
 
 				angular.forEach(image.tags, function(imgtag) {
-					if (imgtag.name == $scope.tag.name) {
+					if (imgtag.name == $scope.card.tag.name) {
 						contains = true;
 					}
 				});
