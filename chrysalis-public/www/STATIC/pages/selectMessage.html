@@ -1,0 +1,13 @@
+<h1>Create or Select a Message</h1>
+
+<div class="custom-message-wrapper">
+	<textarea name="" class="custom-message" id="" rows="3" placeholder="Write Message" ng-model="custommessage"></textarea>
+	<button class="button" ng-click="setCustomMessage()">create card</button>
+</div>
+
+<form action="" class="stock-messages">
+	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}" ng-click="setSelectMessage(message)">
+		<input type="checkbox" id="{{message.uuid}}">
+		{{message.text}}
+	</label>
+</form>
