@@ -42,9 +42,6 @@ passport.use(new LocalStrategy(
 
 // configure Express
 app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.engine('ejs', require('ejs-locals'));
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -69,18 +66,14 @@ app.post('/admin/login', function(req, res, next) {
   })(req, res, next);
 });
 
-app.get('admin/logout', function(req, res){
+app.get('/admin/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/admin.html');
 });
 
-app.get('/unsecure', function(req, res){
-  return res.send("TEST");
-});
 app.get('/secure', ensureAuthenticated, function(req, res){
   return res.send("SECURE");
 });
-
 
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
