@@ -10,7 +10,7 @@ var app = express();
 var helloName = require("./server/helloName");
 var api = require("./server/api");
 
-mongoose.connect("mongodb://localhost/chrysalis");
+mongoose.connect("54.187.178.36:27017/chrysalis");
 var db = mongoose.connection;
 
 var models = require("./server/model/models")(mongoose);
@@ -84,11 +84,13 @@ app.get("/api/images", endpoints.imageGet);
 app.get("/api/images/:id", endpoints.imageIdGet);
 app.get("/api/messages", endpoints.messageGet);
 app.get("/api/messages/:id", endpoints.messageIdGet);
+app.get("/api/cards/delete/:id", endpoints.cardDelete);
+app.get("/api/messages/delete/:id", endpoints.messageDelete);
+app.get("/api/images/delete/:id", endpoints.imageDelete);
+app.get("/api/tags/delete/:id", endpoints.tagDelete);
 
-app.post("/api/cards/delete/:id", endpoints.cardDelete);
-app.post("/api/messages/delete/:id", endpoints.messageDelete);
-app.post("/api/images/delete/:id", endpoints.imageDelete);
-app.post("/api/tags/delete/:id", endpoints.tagDelete);
+app.post("/api/tags/update/:id", endpoints.tagUpdate);
+app.post("/api/messages/update/:id", endpoints.messageUpdate);
 app.post("/api/messages", endpoints.messagePost);
 app.post("/api/images", endpoints.imagePost);
 app.post("/api/cards", endpoints.cardPost);
