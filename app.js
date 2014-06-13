@@ -6,6 +6,7 @@ var express = require('express'),
 
 var format = require('util').format;
 
+var bson = require("bson");
 var app = express();
 var helloName = require("./server/helloName");
 var api = require("./server/api");
