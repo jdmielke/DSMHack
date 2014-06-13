@@ -59,6 +59,23 @@ app.config(function($routeProvider) {
 			$scope.card.image = image;
 			$location.path("/selectMessage");
 		};
+
+		$scope.containsTag = function(tag) {
+			return function(image) {
+				var contains = false;
+				
+				if ($scope.tag == "") {
+					return true;
+				}
+
+				angular.forEach(image.tags, function(imgtag) {
+					if (imgtag.name == $scope.tag.name) {
+						contains = true;
+					}
+				});
+				return contains;
+			}
+		};
 	}]
 )
 
