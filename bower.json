@@ -1,0 +1,17 @@
+{
+  "name": "chrysalis",
+  "version": "1",
+  "homepage": "https://github.com/badamowski/DSMHack",
+  "authors": [
+    "Eric Ponto <eric.ponto@gmail.com>"
+  ],
+  "description": "Chrysalis ecard",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
