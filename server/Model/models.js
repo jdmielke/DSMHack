@@ -1,17 +1,19 @@
 module.exports = function(mongoose) {
 	var tag = mongoose.Schema({
-	  name: String
+		name: String
 	});
+	
 	var image = mongoose.Schema({
-	  name: String,
-	  data: String,
-	  tags: [tag],
-	  artist: String,
-	  age: Number
+		name: String,
+		data: String,
+		tags: [tag],
+		artist: String,
+		age: Number
 	});
+
 	var message = mongoose.Schema({
-	  text: String,
-	  tags: [tag]
+		text: String,
+		tags: [tag]
 	});
 
 
