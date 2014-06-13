@@ -1,0 +1,36 @@
+form.donation {
+	margin: 20px 0 50px;
+	overflow: hidden;
+	div {
+		float: left;
+		font-size: 2em;
+		margin-right: 30px;
+		color: $green;
+	}
+}
+.how-to-donate {
+	clear: both;
+	a {
+		display: block;
+		float: left;
+		margin: 20px 50px 0 0;
+	}
+}
+
+
+@media all and (max-width:670px) {
+	.how-to-donate {
+		a {
+			float: none;
+		}
+	}
+}
+
+@media all and (max-width:570px) {
+	form.donation {
+		div {
+			float: none;
+			margin: 0 0 20px 0; 
+		}
+	}
+}
