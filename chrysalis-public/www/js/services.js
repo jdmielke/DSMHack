@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('chrysalis.services', [])
 
 /**
  * A simple example service that returns some data.
