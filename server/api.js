@@ -55,20 +55,52 @@ module.exports = {
 	messages: function(req, res) {
 		res.send([{
 			uuid: "m1234",
-			text: "Happy Birthday to you",
-			tag: "Birthday"
+			text: "Courage does not always roar. Sometimes courage is the quiet voice at the end of the day saying, “I will try again tomorrow.” –mary anne radmacher",
+			tag: ""
 		}, {
 			uuid: "m1234a",
-			text: "Happy Anniversary. Here's an eCard!",
-			tag: "Anniversary"
+			text: "To the world you may be one person, but to one person you may be the word. -unkown",
+			tag: ""
 		}, {
 			uuid: "m1234b",
-			text: "This is the best eCard ever!",
-			tag: "Birthday"
+			text: "RISK more than others think is safe, CARE more than others think is wise, DREAM more than others think is practical, EXPECT more than others think is possible -cadet maxim",
+			tag: ""
 		}, {
 			uuid: "m1234c",
-			text: "Thank you for being you.",
-			tag: "Anniversary"
+			text: "go confidently in the direction of your dreams! Live the life you’ve imagined. -Thoreau",
+			tag: ""
+		}, {
+			uuid: "m1234d",
+			text: "One person can make a difference, and everyone should try. – John F. Kennedy",
+			tag: ""
+		}, {
+			uuid: "m1234e",
+			text: "Just when the caterpillar thought the world was over, it became a butterfly.... -proverb",
+			tag: ""
+		}, {
+			uuid: "m1234f",
+			text: "When I count my blessings I count you twice! -Irish blessing",
+			tag: ""
+		}, {
+			uuid: "m1234g",
+			text: "What would you attempt to do if you knew you could not fail? –unknown",
+			tag: ""
+		}, {
+			uuid: "m1234h",
+			text: "You are unrepeatable. There is a magic about you that is all your own... -D.M. Dellinger",
+			tag: ""
+		}, {
+			uuid: "m1234i",
+			text: "Life begins at the end of your comfort zone. –Neale Donald Walsch",
+			tag: ""
+		}, {
+			uuid: "m1234j",
+			text: "Shoot for the moon. Even if you miss, you’ll land among the stars.... –unknown",
+			tag: ""
+		}, {
+			uuid: "m1234k",
+			text: "Good friends are like stars. You don’t always see them, but you know they’re always there! –old saying",
+			tag: ""
 		}]);
 	}
 };
