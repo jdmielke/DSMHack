@@ -20,6 +20,9 @@ app.config(function($routeProvider) {
 		controller: "Donation",
 		templateUrl: "pages/donation.html"
 	})
+	.when("/sent", {
+		templateUrl: "pages/sent.html"
+	})
 	.when("/admin/messages", {
 		controller: "AdminMessages",
 		templateUrl: "pages/adminMessages.html"
@@ -56,10 +59,10 @@ app.config(function($routeProvider) {
 	function($scope, ImageList, Card, Tags, $location) {
 		$scope.imageList = ImageList.query();
 		$scope.card = Card;
+		$scope.card.tag = {
+			name: "General Occasion"
+		};
 		Tags.query().$promise.then(function(tags) {
-			$scope.card.tag = {
-				name: "General Occasion"
-			};
 			tags.unshift($scope.card.tag);
 			$scope.tags = tags;
 		});
@@ -73,7 +76,7 @@ app.config(function($routeProvider) {
 			return function(image) {
 				var contains = false;
 
-				if ($scope.card.tag == "" || $scope.card.tag.name == "General Occasion") {
+				if ($scope.card.tag == "" || $scope.card.tag && $scope.card.tag.name == "General Occasion") {
 					return true;
 				}
 
@@ -92,7 +95,7 @@ app.config(function($routeProvider) {
 	function($scope, Card, MessageList, $location) {
 		$scope.messages = MessageList.query();
 		$scope.card = Card;
-
+		
 		$scope.setSelectMessage = function(message) {
 			$scope.card.messageText = message.text;
 			$location.path("/card-horiz");
