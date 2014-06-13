@@ -6,7 +6,12 @@ app.config(function($routeProvider) {
 	$routeProvider.when("/", {
 		controller: "IndexController",
 		templateUrl: "pages/index.html"
-	}).otherwise({
+	})
+	.when("/selectMessage", {
+		controller: "SelectController",
+		templateUrl: "pages/selectMessage.html"
+	})
+	.otherwise({
 		redirectTo:  "/"
 	});
 })
