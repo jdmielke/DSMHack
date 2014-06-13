@@ -346,3 +346,26 @@ a.submit {
       height: 36px;
       margin: 0 auto;
       display: block; }
+
+.admin-body {
+  background: #b0ba25;
+  text-align: center;
+  padding-top: 48px; }
+  .admin-body h2 {
+    font-size: 150%;
+    color: #666;
+    font-weight: 400; }
+  .admin-body img {
+    width: 186px; }
+  .admin-body form {
+    max-width: 300px;
+    margin: 2em auto; }
+  .admin-body input {
+    display: block;
+    float: none;
+    width: 100%;
+    margin: 1em 0;
+    padding: 0.5em 0.75em; }
+  .admin-body .button {
+    width: auto;
+    margin: 0 auto; }
