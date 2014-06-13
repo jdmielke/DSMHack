@@ -5,7 +5,7 @@ module.exports = function(mongoose) {
 	
 	var image = mongoose.Schema({
 		name: String,
-		data: String,
+		url: String,
 		tags: [tag],
 		artist: String,
 		age: Number,
