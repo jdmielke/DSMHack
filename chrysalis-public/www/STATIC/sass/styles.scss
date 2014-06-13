@@ -1,0 +1,158 @@
+@import 'base/reset';
+@import 'base/variables';
+@import "modules/button";
+
+body {
+	font-family: $font;
+	font-size: 1em;
+	min-width: 450px;
+}
+
+
+* {
+	@include box-sizing;
+}
+
+/* ////////////////////////////////////////////// Sticky FOoter */
+
+html,body {
+	height: 100%;
+}
+.pagewrapper {
+	min-height: 100%;
+	margin-bottom: -180px;
+	&:after {
+		content: '';
+		display: block;
+	}
+}
+.footer-wrapper, .pagewrapper:after {
+	height: 180px;
+}
+
+
+
+
+/* ////////////////////////////////////////////// General styles */
+
+h1 {
+	color: $darkest-green;
+	font-size: 1.8em;
+	margin-bottom: 20px;
+}
+
+
+form {
+	label {
+		left: 99999em;
+		top: auto;
+		display: block;
+		width: 1px;
+		height: 1px;
+		position: absolute;
+	}
+	input {
+		float: left;
+		margin-right: 20px;
+		padding: 10px;
+	}
+}
+/* ////////////////////////////////////////////// Layout styles */
+
+.header-top {
+	border-bottom: 2px solid $green;
+	background-color: $green;
+	overflow: hidden;
+	width: 100%;
+	.header-top-inside {
+		margin: 0 auto;
+		max-width: 1024px;
+		padding: 0 20px;
+		.logo {
+			display: block;
+			float: left;
+			width: 99px;
+			height: 80px;
+			text-indent: -9999em;
+			background: url(../img/chrysalis_logo.png) no-repeat top left;
+		}
+		p {
+			float: right;
+			background: $darkest-green;
+			padding: 20px;
+			color: $white;
+			@include box-shadow(0,0,5px,rgba(0, 0, 0, 0.5));
+		}
+	}
+}
+
+.header-bottom {
+	background-color: $light-green;
+	border-top: 1px solid $medium-green;
+	color: $dark-green;
+	font-size: 1.25em;
+	padding: 10px 0;
+	@include box-shadow(0,2px,3px,$green,inset);
+	.header-bottom-inside {
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+}
+
+.content {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 40px 20px 0 20px;
+}
+
+.footer-wrapper {
+	clear: both;
+	line-height: 1.5;
+	overflow: hidden;
+	padding: 2em 20px 1em;
+	background-color: $green;
+	color: $white;
+	font-size: .8em;
+	font-weight: 300;
+	.footer {
+		max-width: 1024px;
+		margin: 0 auto;
+		p {
+			color: $dark-green;
+			font-size: 3em;
+			font-weight: 400px;
+			padding-top: 1.25em;
+			float: left;
+		}
+	}
+}
+.navigation {
+	float: right;
+	ul {
+		float: left;
+		width: 50%;
+		li {
+			list-style-type: none;
+			a {
+				text-decoration: none;
+				color: $white;
+				font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			}
+		}
+	}
+	ul.right {
+		padding-left: .5em;
+	}
+	ul.left {
+		text-align: right;
+		border-right: 1px solid $dark-green;
+		padding-right: .5em;
+	}
+}
+
+@import "pages/selectMessages";
+@import "pages/home";
+@import "pages/card";
+@import "pages/admin";
+@import "pages/donation";

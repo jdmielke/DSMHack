@@ -1,0 +1,23 @@
+<h1>Messages</h1>
+
+<div class="controls">
+	<label for="">Filter: </label>
+	<select name="" id="" ng-model="tag" ng-options="tag.name for tag in tags" ></select>
+	<a href="#">delete</a>
+	<a href="#">unpublish</a>
+	<button class="button">new message</button>
+</div>
+
+<form action="" class="stock-messages">
+	<label ng-repeat="message in messages | filter:tag" class="message" for="{{message.uuid}}" >
+		<input type="checkbox" id="{{message.uuid}}">
+		{{message.text}}
+	
+		<div class="message-controls">
+			<strong>{{message.tag}}</strong>
+			<strong>new tag</strong>
+			<input type="text" placeholder="new tag name">
+		</div>
+	</label>
+
+</form>
