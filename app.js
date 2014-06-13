@@ -4,14 +4,8 @@ var express = require('express'),
 var MongoClient = require('mongodb').MongoClient,
 	format = require('util').format;
 
-var db = MongoClient.connect('mongodb://127.0.0.1:27017/chrysalis', function(err, db) {
-	if(err)
-		throw err;
-	console.log("connected to the mongoDB !");
-	myCollection = db.collection('images');
-});
-
 var app = express();
+var helloName = require("./server/helloName");
 
 // configure Express
 app.configure(function() {
@@ -39,7 +33,6 @@ app.get('/images', function(req, res){
 	console.log(doc.name);
   });
 });
-
 
 app.get("/test", function(req, res){
 	var mongoose = require("mongoose");
@@ -73,6 +66,8 @@ app.get("/test", function(req, res){
 	});
 
 });
+
+app.post("/hello", helloName);
 
 app.listen(8080, function() {
   console.log("Application started on port 8080!");

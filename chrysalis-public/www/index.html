@@ -1,45 +1,68 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<title>Chrysalis eCard</title>
+<!doctype html>
 
-		<link href="css/styles.css" rel="stylesheet">
+<html lang="en"  ng-app="app">
+<head>
+  <meta charset="utf-8">
 
-		<!-- ionic/angularjs scripts -->
-		<script src="lib/js/ionic.bundle.js"></script>
+  <title>Chrysalis</title>
+  <meta name="description" content="Since 1989 Chrysalis is dedicated to increasing resources and opportunities for girls and women in Greater Des Moines.">
 
-		<!-- cordova script (this will be a 404 during development) -->
-		<script src="cordova.js"></script>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
 
-		<!-- your app's script -->
-		<script src="js/app.js"></script>
-		<script src="js/services.js"></script>
-		<script src="js/controllers.js"></script>
-	</head>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
 
-	<!-- 
-		'starter' is the name of this angular module (js/app.js)
-	-->
-	<body ng-app="starter" animation="slide-left-right-ios7">
+<body>
+  <div class="header">
+  	<div class="header-top">
+  		<div class="header-top-inside">
+  			<a href="#" class="logo">Chrysalis</a>
+  			<nav>
+  				<a href="#">Why this matters</a>
+  				<a href="#">Events</a>
+  				<a href="#">Grants</a>
+  				<a href="#">Meet us</a>
+  				<a href="#">Contact</a>
+  				<a href="#" class="sendacard">Send a card</a>
+  			</nav>
+  		</div>
+  	</div>
+  	<div class="header-bottom">
+  		<div class="header-bottom-inside">
+  			<p>inspire to aspire</p>
+  		</div>
+  	</div>
+  </div><!-- End header -->
+  <div class="content-wrapper">
+  	<div class="content">
+  		<div ng-view></div>
+  	</div>
+  </div><!-end content wrapper ->
+  <div clas="footer-wrapper">
+  	<div class="footer">
+  		<p>We are chrysalis</p>
+  		<div class="navigation">
+  			<ul class="left">
+  				<li><a href="#">Home</a></li>
+  				<li><a href="#">Privacy policy</a></li>
+  				<li><a href="#">Contact us</a></li>
+  				<li>copyright 2013 chrysalis</li>
+  			</ul>
+  			<ul class="right">
+  				<li>chrysalis</li>
+  				<li>300 east locust street</li>
+  				<li>suite 245</li>
+  				<li>des moines, iowa 50309</li>
+  				<li>515.255.1853</li>
+  			</ul>
+  		</div>
+  	</div>
+  </div>
 
-		<!-- 
-			The nav bar that will be updated as we navigate between views
-			Additional attributes set its look, ion-nav-bar animation and icons
-			Icons provided by Ionicons: http://ionicons.com/ 
-		-->
-		<ion-nav-bar type="bar-balanced" class="bar-balanced"
-						 animation="nav-title-slide-ios7" 
-						 back-button-type="button-icon button-clear" 
-						 back-button-icon="ion-ios7-arrow-back"></ion-nav-bar>
-
-		<!-- 
-			The views will be rendered in the <ion-nav-view> directive below
-			Templates are in the /templates folder (but you could also
-			have templates inline in this html file if you'd like).
-		-->
-		<ion-nav-view></ion-nav-view>
-
-	</body>
+  <script src="js/angular/angular.min.js"></script>
+  <script src="js/angular-route/angular-route.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>
