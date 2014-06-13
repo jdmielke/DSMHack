@@ -56,19 +56,19 @@ module.exports = {
 		res.send([{
 			uuid: "m1234",
 			text: "Happy Birthday to you",
-			tag: ""
+			tag: "Birthday"
 		}, {
 			uuid: "m1234a",
-			text: "Happy Anniverary. Here's an eCard!",
-			tag: ""
+			text: "Happy Anniversary. Here's an eCard!",
+			tag: "Anniversary"
 		}, {
 			uuid: "m1234b",
 			text: "This is the best eCard ever!",
-			tag: ""
+			tag: "Birthday"
 		}, {
 			uuid: "m1234c",
 			text: "Thank you for being you.",
-			tag: ""
+			tag: "Anniversary"
 		}]);
 	}
 };
