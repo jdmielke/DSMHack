@@ -102,23 +102,16 @@ app.post("/api/cards", endpoints.cardPost);
 app.post("/api/tags", endpoints.tagPost);
 app.get("/api/messages", api.messages);
 
-app.post("/api/images/upload", function(res, req){
-  var newImage = new models.image({
-    "name" : req.body.name,
-    "extension" : req.body.extension,
-    "tags" : req.body.tags,
-    "artist" : req.body.artist,
-    "age" : req.body.age,
-    "orientation" : "horizontal"
-  });
-  newTag.save(function (err) {
+app.post("/api/images/upload", function(req, res){
+  var newImage = new models.image(JSON.parse(JSON.parse(unescape(req.body.data))));
+  newImage.save(function (err) {
     if (err) {
       return console.log(err);
     }else{
-      fs.readFile(req.files.displayImage.path, function (err, data) {
-        var newPath = __dirname + "/img/drawings/" + newTag.id + newTag.extension;
+      fs.readFile(req.files.imageUpload.path, function (err, data) {
+        var newPath = __dirname + "\\chrysalis-public\\www\\img\\drawings\\" + newImage.id + '.' + newImage.extension;
         fs.writeFile(newPath, data, function (err) {
-          return res.send(newTag);
+          return res.send(newImage);
         });
       });
     }
