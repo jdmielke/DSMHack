@@ -9,7 +9,7 @@
 </div>
 
 <form action="" class="stock-messages">
-	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}" ng-click="selectMessage(message)">
+	<label ng-repeat="message in messages | filter:tag" class="message" for="{{message.uuid}}" >
 		<input type="checkbox" id="{{message.uuid}}">
 		{{message.text}}
 	
