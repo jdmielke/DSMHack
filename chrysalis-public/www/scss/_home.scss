@@ -1,0 +1,33 @@
+
+/* ////////////////////////////////////////////// Home styles */
+
+.send-text {
+	margin-bottom: 40px;
+	p {
+		float: left;
+		padding-top: 3px;
+	}
+	form {
+		float: left;
+		margin: 0 10px;
+	}
+}
+.cards {
+	a {
+		width: 155px;
+		height: 155px;
+		float: left;
+		border: 8px solid $gray;
+		display: block;
+		margin: 0 40px 40px 0;
+		@include border-radius(12px);
+		overflow: hidden;
+		img {
+			min-width: 100%;
+			max-width: 200px;
+		}
+		&:hover {
+			border: 8px solid $green;
+		}
+	}
+}
