@@ -4,11 +4,11 @@
 		<p>To:</p>
 		<form>
 			<label for="first-name">First Name</label>
-			<input type="text" placeholder="First Name" id="first-name">
+			<input type="text" placeholder="First Name" id="first-name"  ng-model="firstname">
 			<label for="last-name">Last Name</label>
 			<input type="text" placeholder="Last Name" id="last-name"> 
 			<label for="email">Email</label>
-			<input type="text" placeholder="Email" id="email">
+			<input type="text" placeholder="Email" id="email" ng-model="toEmail">
 		</form>
 	</div>
 	<div class="sender">
@@ -19,17 +19,17 @@
 			<label for="last-name">Last Name</label>
 			<input type="text" placeholder="Last Name" id="last-name"> 
 			<label for="email">Email</label>
-			<input type="text" placeholder="Email" id="email">
+			<input type="text" placeholder="Email" id="email" ng-model="fromEmail">
 		</form>
 	</div>
 	<a href="#" class="submit">I'm finished</a>
 	</form>
 </div>
 <div class="card">
-	<img src="img/drawings/child_drawing_1.jpg" />
+	<img ng-src="{{card.image.url}}" />
 	<div class="message">
-		<h2>Name,</h2>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum</p>
+		<h2>{{firstname}},</h2>
+		<p>{{card.messageText}}</p>
 		<h2 class="bottom-heading">From</h2>
 	</div>
 	<div class="logo-bar">

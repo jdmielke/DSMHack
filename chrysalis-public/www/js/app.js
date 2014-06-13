@@ -27,12 +27,49 @@ app.config(function($routeProvider) {
 	});
 }])
 
-.controller("IndexController", ["$scope", "ImageList", function($scope, ImageList) {
-	$scope.imageList = ImageList.query();
-	$scope.tag = "";
-	$scope.tags = [
-		"",
-		"Anniversary",
-		"Birthday"
-	];
-}]);
+.factory("MessageList", ['$resource', function($resource){
+	return $resource("api/messages", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
+
+.factory("Card", function() {
+	var card = {};
+	return card;
+})
+
+.controller("IndexController", ["$scope", "ImageList", "Card", "$location",
+	function($scope, ImageList, Card, $location) {
+		$scope.imageList = ImageList.query();
+		$scope.tag = "";
+		$scope.tags = [
+			"",
+			"Anniversary",
+			"Birthday"
+		];
+		$scope.card = Card;
+
+		$scope.selectImage = function(image) {
+			$scope.card.image = image;
+			$location.path("/selectMessage");
+		};
+	}]
+)
+
+.controller("SelectController", ["$scope", "Card", "MessageList", "$location",
+	function($scope, Card, MessageList, $location) {
+		$scope.messages = MessageList.query();
+		$scope.card = Card;
+
+		$scope.selectMessage = function(message) {
+			$scope.card.messageText = message.text;
+			$location.path("/card-horiz");
+		};
+	}
+])
+
+.controller("CardHoriz", ["$scope", "Card",
+	function($scope, Card) {
+		$scope.card = Card;
+	}
+]);

@@ -1,0 +1,33 @@
+.admin-body {
+	background: $green;
+	text-align: center;
+	padding-top: 48px;
+
+	h2 {
+		font-size: 150%;
+		color: #444;
+		font-weight: 400;
+	}
+
+	img {
+		width: 186px;
+	}
+
+	form {
+		max-width: 300px;
+		margin: 2em auto;
+	}
+	input {
+		display: block;
+		float: none;
+		width: 100%;
+		margin: 1em 0;
+		padding: 0.5em 0.75em;
+	}
+
+	.button {
+		width: auto;
+		margin: 0 auto;
+	}
+
+}
