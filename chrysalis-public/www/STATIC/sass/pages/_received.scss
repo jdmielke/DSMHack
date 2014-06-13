@@ -1,0 +1,32 @@
+.recieved {
+	margin-bottom: 50px;
+	.text {
+		overflow: hidden;
+		margin: 30px 0;
+		img, h1, a {
+			float: left;
+		}
+		h1 {
+			margin-right: 10px;
+			font-size: 1.7em;
+		}
+	}
+	.card.vert {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+}
+
+@media all and (max-width: 975px) {
+	.recieved {
+		.text {
+			text-align: center;
+			img,h1, a {
+				float: none;
+			}
+			a {
+				display: inline-block;
+			}
+		}
+	}
+}

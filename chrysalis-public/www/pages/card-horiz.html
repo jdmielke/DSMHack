@@ -1,38 +1,39 @@
 <h1>Send A Card</h1>
 <div class="to-from">
-	<div class="reciever">
-		<p>To:</p>
-		<form>
-			<label for="first-name">First Name</label>
-			<input type="text" placeholder="First Name" id="first-name"  ng-model="to">
-			<label for="last-name">Last Name</label>
-			<input type="text" placeholder="Last Name" id="last-name"> 
-			<label for="email">Email</label>
-			<input type="text" placeholder="Email" id="email" ng-model="toEmail">
-		</form>
+	<div class="information">
+		<div class="reciever">
+			<p>To:</p>
+			<form>
+				<label for="first-name">First Name</label>
+				<input type="text" placeholder="First Name" class="first-name"  ng-model="to">
+				<label for="last-name">Last Name</label>
+				<input type="text" placeholder="Last Name" class="last-name"> 
+				<label for="email">Email</label>
+				<input type="text" placeholder="Email" class="email" ng-model="toEmail">
+			</form>
+		</div>
+		<div class="sender">
+			<p>From:</p>
+			<form>
+				<label for="first-name">First Name</label>
+				<input type="text" placeholder="First Name" class="first-name" ng-model="from">
+				<label for="last-name">Last Name</label>
+				<input type="text" placeholder="Last Name" class="last-name"> 
+				<label for="email">Email</label>
+				<input type="text" placeholder="Email" class="email" ng-model="fromEmail">
+			</form>
+		</div>
 	</div>
-	<div class="sender">
-		<p>From:</p>
-		<form>
-			<label for="first-name">First Name</label>
-			<input type="text" placeholder="First Name" id="first-name" ng-model="from">
-			<label for="last-name">Last Name</label>
-			<input type="text" placeholder="Last Name" id="last-name"> 
-			<label for="email">Email</label>
-			<input type="text" placeholder="Email" id="email" ng-model="fromEmail">
-		</form>
-	</div>
-	<a href="#" class="submit">I'm finished</a>
-	</form>
+	<a href="#/donation" class="submit">I'm finished</a>
 </div>
 <div class="card">
-	<img ng-src="{{card.image.url}}" />
 	<div class="message">
 		<h2>{{to}},</h2>
 		<p>{{card.messageText}}</p>
-		<h2 class="bottom-heading">From</h2>
+		<h2 class="bottom-heading">{{from}}</h2>
 	</div>
 	<div class="logo-bar">
 		<img src="img/chrysalis_logo.png" />
 	</div>
+	<img ng-src="{{card.image.url}}" />
 </div>
