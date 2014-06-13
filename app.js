@@ -5,6 +5,7 @@ var format = require('util').format;
 
 var app = express();
 var helloName = require("./server/helloName");
+var api = require("./server/api");
 
 var mongoose = require("mongoose");
 
@@ -46,6 +47,8 @@ app.post("/kitten", function(req, res){
   });
   return res.send(newKitten);
 });
+
+app.get("/api/images/list", api.list);
 
 app.post("/hello", helloName);
 

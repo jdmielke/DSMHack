@@ -2,17 +2,47 @@
 	display: block;
 	float: left;
 	width: 100%;
-	padding: 1em;
+	padding: 1em 1.5em 1em 2.5em;
+	position: relative;
+	font-size: 95%;
+	left: 0;
+	top: 0;
+	height: auto;
 
 	@media all and (min-width: 30em) {
 		width: 50%;
 	}
+
+	input {
+		position: absolute;
+		left: 0;
+	}
 }
 
-.custom-message {
-	width: 100%;
+.custom-message-wrapper {
+	@include clearfix();
 
-	@media all and (min-width: 30em) {
-		width: 66.6%;
+	textarea, button {
+		float: left;
 	}
+
+	textarea {
+		width: 100%;
+		@include box-shadow(0,0,2px,rgba(0, 0, 0, 0.2));
+		border-color: #ccc;
+		resize: none;
+
+		@media all and (min-width: 30em) {
+			width: 50%;
+		}
+	}
+
+	button {
+		margin: 0.5em 1em;
+	}
+}
+
+.stock-messages {
+	@include clearfix();
+	margin-bottom: 4em;
 }

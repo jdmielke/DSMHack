@@ -43,3 +43,16 @@ $font: Arial, "Helvetica Neue", Helvetica, sans-serif;
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+
+@mixin clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020"; 
+        display: block; 
+        height: 0; 
+        overflow: hidden; 
+    }
+    &:after {
+        clear: both;
+    }
+}

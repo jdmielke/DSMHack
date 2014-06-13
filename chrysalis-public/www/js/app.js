@@ -1,4 +1,5 @@
 var app = angular.module("app", [
+		"ngResource",
 		"ngRoute"
 	]);
 
@@ -20,6 +21,18 @@ app.config(function($routeProvider) {
 	});
 })
 
-.controller("IndexController", ["$scope", function($scope) {
+.factory("ImageList", ['$resource', function($resource){
+	return $resource("api/images/list", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
 
+.controller("IndexController", ["$scope", "ImageList", function($scope, ImageList) {
+	$scope.imageList = ImageList.query();
+	$scope.tag = "";
+	$scope.tags = [
+		"",
+		"Anniversary",
+		"Birthday"
+	];
 }]);
