@@ -1,0 +1,17 @@
+.button, .submit {
+	padding: 0.5em 1em;
+	border-radius: 0;
+	background-color: $orange;
+	color: $white;
+	border: none;
+	outline: none;
+	font-weight: bold;
+	font-size: 115%;
+	text-decoration: none;
+	text-transform: lowercase;
+
+	&:hover,
+	&:focus {
+		background-color: lighten($orange, 5%);
+	}
+}
