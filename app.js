@@ -6,6 +6,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 var app = express();
 var helloName = require("./server/helloName");
+var api = require("./server/api");
 
 // configure Express
 app.configure(function() {
@@ -66,6 +67,8 @@ app.get("/test", function(req, res){
 	});
 
 });
+
+app.get("/api/images/list", api.list);
 
 app.post("/hello", helloName);
 
