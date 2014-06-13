@@ -16,6 +16,10 @@ app.config(function($routeProvider) {
 		controller: "CardHoriz",
 		templateUrl: "pages/card-horiz.html"
 	})
+	.when("/donation", {
+		controller: "Donation",
+		templateUrl: "pages/donation.html"
+	})
 	.when("/admin/messages", {
 		controller: "AdminMessages",
 		templateUrl: "pages/adminMessages.html"
@@ -52,8 +56,13 @@ app.config(function($routeProvider) {
 	function($scope, ImageList, Card, Tags, $location) {
 		$scope.imageList = ImageList.query();
 		$scope.card = Card;
-		$scope.card.tag = "";
-		$scope.tags = Tags.query();
+		Tags.query().$promise.then(function(tags) {
+			$scope.card.tag = {
+				name: "General Occasion"
+			};
+			tags.unshift($scope.card.tag);
+			$scope.tags = tags;
+		});
 
 		$scope.selectImage = function(image) {
 			$scope.card.image = image;
@@ -64,7 +73,7 @@ app.config(function($routeProvider) {
 			return function(image) {
 				var contains = false;
 
-				if ($scope.card.tag == "") {
+				if ($scope.card.tag == "" || $scope.card.tag.name == "General Occasion") {
 					return true;
 				}
 
@@ -74,7 +83,7 @@ app.config(function($routeProvider) {
 					}
 				});
 				return contains;
-			}
+			};
 		};
 	}]
 )
