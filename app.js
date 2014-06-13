@@ -60,8 +60,7 @@ app.post('/admin/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err) }
     if (!user) {
-      req.session.messages =  [info.message];
-      return res.redirect('/admin.html')
+      return res.redirect('/admin.html?error=' + info.message)
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
