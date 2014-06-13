@@ -27,12 +27,27 @@ app.config(function($routeProvider) {
 	});
 }])
 
-.controller("IndexController", ["$scope", "ImageList", function($scope, ImageList) {
-	$scope.imageList = ImageList.query();
-	$scope.tag = "";
-	$scope.tags = [
-		"",
-		"Anniversary",
-		"Birthday"
-	];
-}]);
+.factory("Card", function() {
+	var card = {};
+	return card;
+})
+
+.controller("IndexController", ["$scope", "ImageList", "Card", "$location",
+	function($scope, ImageList, Card, $location) {
+		$scope.imageList = ImageList.query();
+		$scope.tag = "";
+		$scope.tags = [
+			"",
+			"Anniversary",
+			"Birthday"
+		];
+		$scope.card = Card;
+
+		$scope.selectImage = function(image) {
+			$scope.card.selectedImage = image.uuid;
+			$location.path("/selectMessage");
+		};
+}])
+
+.controller("SelectController", function($scope) {})
+.controller("CardHoriz", function() {});
