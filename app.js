@@ -82,7 +82,6 @@ app.get('/secure', ensureAuthenticated, function(req, res){
   return res.send("SECURE");
 });
 
-
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
 app.get("/api/tags/:id", endpoints.tagIdGet);
@@ -93,6 +92,10 @@ app.get("/api/images/:id", endpoints.imageIdGet);
 app.get("/api/messages", endpoints.messageGet);
 app.get("/api/messages/:id", endpoints.messageIdGet);
 
+app.post("/api/cardsdelete/:id", endpoints.cardDelete);
+app.post("/api/messagesdelete/:id", endpoints.messageDelete);
+app.post("/api/imagesdelete/:id", endpoints.imageDelete);
+app.post("/api/tagsdelete/:id", endpoints.tagDelete);
 app.post("/api/messages", endpoints.messagePost);
 app.post("/api/images", endpoints.imagePost);
 app.post("/api/cards", endpoints.cardPost);

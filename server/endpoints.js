@@ -1,5 +1,49 @@
 module.exports = function(models){
   return {
+    tagDelete:  function(req, res){
+      return models.tag.findById(req.params.id, function (err, data) {
+        return data.remove(function(err){
+          if (!err) {
+            return res.send('');
+          } else {
+            return console.error(err);
+          }
+         });
+      });
+     },
+    messageDelete:  function(req, res){
+      return models.message.findById(req.params.id, function (err, data) {
+        return data.remove(function(err){
+          if (!err) {
+            return res.send('');
+          } else {
+            return console.error(err);
+          }
+         });
+      });
+     },
+     imageDelete:  function(req, res){
+      return models.image.findById(req.params.id, function (err, data) {
+        return data.remove(function(err){
+          if (!err) {
+            return res.send('');
+          } else {
+            return console.error(err);
+          }
+         });
+      });
+     },
+     cardDelete:  function(req, res){
+      return models.card.findById(req.params.id, function (err, data) {
+        return data.remove(function(err){
+          if (!err) {
+            return res.send('');
+          } else {
+            return console.error(err);
+          }
+         });
+      });
+     },
     tagPost:  function(req, res){
         var newTag = new models.tag(req.body);
         newTag.save(function (err) {
