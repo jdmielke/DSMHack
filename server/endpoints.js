@@ -126,15 +126,17 @@ module.exports = function(models){
       });
     },
     tagGet: function(req, res){
-      return models.tag.find("", function(err, data){
-        if (!err){ 
-          return res.send(data)
-        }
-        else{
-           return console.error(err);
-        }
-
-      }); 
+      return models.tag
+        .find("")
+        .sort("name")
+        .exec(function(err, data){
+          if (!err){ 
+            return res.send(data)
+          }
+          else{
+             return console.error(err);
+          }
+        }); 
     },
     imagePost: function(req, res){
       var newTag = new models.image(req.body);

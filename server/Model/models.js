@@ -18,7 +18,7 @@ module.exports = function(mongoose) {
 		published: Boolean
 	});
 	var card = mongoose.Schema({
-	  image: [image],
+	  image: Object,
 	  messageText: String,
 	  from: String,
 	  fromEmail: String,

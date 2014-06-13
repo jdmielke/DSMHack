@@ -2,10 +2,12 @@ var express = require('express'),
   nodemailer = require("nodemailer"),
   passport = require('passport'), 
   LocalStrategy = require('passport-local').Strategy,
-  mongoose = require("mongoose");
+  mongoose = require("mongoose"),
+  bcrypt = require("bcrypt-nodejs");
 
 var format = require('util').format;
 
+var bson = require("bson");
 var app = express();
 var helloName = require("./server/helloName");
 var api = require("./server/api");
@@ -32,7 +34,7 @@ passport.use(new LocalStrategy(
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (user.password != password) {
+      if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -74,6 +76,8 @@ app.get('/admin/logout', function(req, res){
 app.get('/secure', ensureAuthenticated, function(req, res){
   return res.send("SECURE");
 });
+
+
 
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
