@@ -677,3 +677,41 @@ a.submit {
 .error.show {
   display: block;
 }
+
+/* line 1, ../sass/pages/_donation.scss */
+form.donation {
+  margin: 20px 0 50px;
+  overflow: hidden;
+}
+/* line 4, ../sass/pages/_donation.scss */
+form.donation div {
+  float: left;
+  font-size: 2em;
+  margin-right: 30px;
+  color: #b0ba25;
+}
+
+/* line 11, ../sass/pages/_donation.scss */
+.how-to-donate {
+  clear: both;
+}
+/* line 13, ../sass/pages/_donation.scss */
+.how-to-donate a {
+  display: block;
+  float: left;
+  margin: 20px 50px 0 0;
+}
+
+@media all and (max-width: 670px) {
+  /* line 23, ../sass/pages/_donation.scss */
+  .how-to-donate a {
+    float: none;
+  }
+}
+@media all and (max-width: 570px) {
+  /* line 31, ../sass/pages/_donation.scss */
+  form.donation div {
+    float: none;
+    margin: 0 0 20px 0;
+  }
+}
