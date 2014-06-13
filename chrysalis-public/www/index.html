@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en"  ng-app="app">
 <head>
   <meta charset="utf-8">
 
@@ -29,57 +29,8 @@
   	</div>
   </div><!-- End header -->
   <div class="content-wrapper">
-  	<div class="content">
-  		
-  		<h1>Send A Card</h1>
-  		<div class="send-text"><p>I want to send an<form><select><option>Please Select</option><option>Birthday</option></select></form> card.</p></div>
-  		<div class="cards">
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-  		</div>
+  	<div class="content"> 		
+  		<div ng-view></div>
   	</div>
   </div><!-end content wrapper ->
   <div class="footer-wrapper">
@@ -102,5 +53,8 @@
   		</div>
   	</div>
   </div>
+  <script src="js/angular/angular.min.js"></script>
+  <script src="js/angular-route/angular-route.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

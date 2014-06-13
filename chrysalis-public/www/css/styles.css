@@ -1,3 +1,28 @@
+.message {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 1em; }
+  @media all and (min-width: 30em) {
+    .message {
+      width: 50%; } }
+
+.custom-message {
+  width: 100%; }
+  @media all and (min-width: 30em) {
+    .custom-message {
+      width: 66.6%; } }
+
+.button {
+  padding: 0.5em 1em;
+  border-radius: 0;
+  background-color: #dc0;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  font-size: 115%; }
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
