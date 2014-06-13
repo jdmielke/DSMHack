@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
 })
 
 .factory("ImageList", ['$resource', function($resource){
-	return $resource("api/images/list", {}, {
+	return $resource("api/images", {}, {
 		query: {method: "GET", isArray:true}
 	});
 }])
