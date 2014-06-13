@@ -95,9 +95,9 @@
 		color: $orange;
 		&:before {
 			content: '';
-			background: url(../img/icon-unpublished.jpg) no-repeat top left;
-			width: 12px;
-			height: 12px;
+			background: url(../img/icon-unpublish.jpg) no-repeat top left;
+			width: 8px;
+			height: 8px;
 			display: inline-block;
 			padding-right: 5px;
 		}
@@ -119,9 +119,45 @@
 			clear: both;
 		}
 	}
+	.edit {
+		color: $black;
+		margin-right: 20px;
+		text-decoration: none;
+		color: $orange;
+		&:before {
+			content: '';
+			background: url(../img/icon-editmode.jpg) no-repeat top left;
+			width: 12px;
+			height: 12px;
+			display: inline-block;
+			padding-right: 5px;
+		}
+	}
+	.view-unpublished {
+		color: $black;
+		margin-right: 20px;
+		text-decoration: none;
+		color: $orange;
+		&:before {
+			content: '';
+			background: url(../img/icon-ViewUnpublished.png) no-repeat top left;
+			width: 12px;
+			height: 12px;
+			display: inline-block;
+			padding-right: 5px;
+		}
+	}
 }
 
-
+.flash-message {
+	background:$pink;
+	padding: 10px 0;
+	p {
+		color: $white;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
 .message {
 	clear: both;
 	margin-bottom: 50px;
@@ -169,7 +205,13 @@
 	}
 	
 }
-
+.admin-page {
+	.cards {
+		a.selected {
+			border: 8px solid $green;
+		}
+	}
+}
 
 
 
@@ -237,5 +279,27 @@
 
 	&.show {
 		display: block;
+	}
+}
+
+@media all and (max-width:550px) {
+	.options {
+		margin-bottom: 50px;
+		overflow: hidden;
+		p {
+			margin-bottom: 10px;
+		}
+		.delete, .unpublish {
+			clear: left;
+			display: block;
+			margin-bottom: 10px;
+		}
+		.button {
+			display: block;
+			float: left;
+		}
+	}
+	.cards {
+		clear: both;
 	}
 }
