@@ -393,3 +393,12 @@ a.submit {
     font-size: 105%; }
     .controls a:hover, .controls a:focus {
       color: #e29903; }
+
+.error {
+  display: none;
+  padding: 1em;
+  margin: 1em 0;
+  background: #f16157;
+  color: #fff; }
+  .error.show {
+    display: block; }
