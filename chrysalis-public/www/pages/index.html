@@ -1,49 +1,11 @@
 <h1>Send A Card</h1>
-  		<div class="send-text"><p>I want to send an<form><select><option>Please Select</option><option>Birthday</option></select></form> card.</p></div>
-  		<div class="cards">
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_1.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_2.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_3.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_4.jpg" />
-	  		</a>
-	  		<a href="#">
-	  			<img src="img/drawings/child_drawing_5.jpg" />
-	  		</a>
-  		</div>
+<div class="send-text">
+	<p>I want to send an<form>
+	<select ng-model="tag" ng-options="tag as tag for tag in tags"></select></form> card.
+	</p>
+</div>
+<div class="cards">
+	<a href="" ng-repeat="image in imageList | filter:tag">
+		<img ng-src="{{image.url}}" ng-click="selectImage(image);">
+	</a>
+</div>

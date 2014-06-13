@@ -1,4 +1,5 @@
 var app = angular.module("app", [
+		"ngResource",
 		"ngRoute"
 	]);
 
@@ -20,6 +21,33 @@ app.config(function($routeProvider) {
 	});
 })
 
-.controller("IndexController", ["$scope", function($scope) {
+.factory("ImageList", ['$resource', function($resource){
+	return $resource("api/images/list", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
 
-}]);
+.factory("Card", function() {
+	var card = {};
+	return card;
+})
+
+.controller("IndexController", ["$scope", "ImageList", "Card", "$location",
+	function($scope, ImageList, Card, $location) {
+		$scope.imageList = ImageList.query();
+		$scope.tag = "";
+		$scope.tags = [
+			"",
+			"Anniversary",
+			"Birthday"
+		];
+		$scope.card = Card;
+
+		$scope.selectImage = function(image) {
+			$scope.card.selectedImage = image.uuid;
+			$location.path("/selectMessage");
+		};
+}])
+
+.controller("SelectController", function($scope) {})
+.controller("CardHoriz", function() {});

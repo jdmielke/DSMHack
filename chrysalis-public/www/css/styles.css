@@ -90,6 +90,8 @@ input, select {
   font-size: 115%;
   text-decoration: none;
   text-transform: lowercase; }
+  .button:hover, .button:focus, .submit:hover, .submit:focus {
+    background-color: #fcbb35; }
 
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
