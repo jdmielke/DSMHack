@@ -2,9 +2,13 @@
 	<ion-content has-header="true">
 
 	<div class="padding">
-		<div>Hello, {{name}}!!</div>
-		
 		<img src="img/chrysalis-logo.png" alt="">
+
+		<div class="select-type">
+			I'm looking for a
+			<select ng-model="cardtype" ng-options="type as type for type in types"></select>
+			card.
+		</div>
 	</div>
 
 		<div class="list list-inset">
