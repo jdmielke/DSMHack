@@ -1,0 +1,9 @@
+/* Home media queries */
+@media all and (max-width: 1024px) {
+  /* line 3, ../../sass/media-queries/main-mq.scss */
+  .cards {
+    max-width: 780px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
