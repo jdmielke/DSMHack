@@ -1,1 +1,1 @@
-mongorestore -d chrysalis mongodump/chrysalis
+mongorestore -d chrysalis mongoexport/chrysalis

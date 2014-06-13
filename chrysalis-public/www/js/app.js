@@ -65,8 +65,13 @@ app.config(function($routeProvider) {
 		$scope.messages = MessageList.query();
 		$scope.card = Card;
 
-		$scope.selectMessage = function(message) {
+		$scope.setSelectMessage = function(message) {
 			$scope.card.messageText = message.text;
+			$location.path("/card-horiz");
+		};
+
+		$scope.setCustomMessage = function() {
+			$scope.card.messageText = $scope.custommessage;
 			$location.path("/card-horiz");
 		};
 	}
