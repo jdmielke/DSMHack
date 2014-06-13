@@ -50,5 +50,25 @@ module.exports = {
 			url: "img/drawings/child_drawing_4.jpg",
 			tag: "Anniversary"
 		}]);
+	},
+
+	messages: function(req, res) {
+		res.send([{
+			uuid: "m1234",
+			text: "Happy Birthday to you",
+			tag: ""
+		}, {
+			uuid: "m1234a",
+			text: "Happy Anniverary. Here's an eCard!",
+			tag: ""
+		}, {
+			uuid: "m1234b",
+			text: "This is the best eCard ever!",
+			tag: ""
+		}, {
+			uuid: "m1234c",
+			text: "Thank you for being you.",
+			tag: ""
+		}]);
 	}
 };

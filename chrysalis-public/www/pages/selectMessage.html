@@ -6,14 +6,8 @@
 </div>
 
 <form action="" class="stock-messages">
-	<label for="" class="message"><input type="checkbox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, nesciunt, officiis id aut rerum odit magni neque modi provident tenetur quis quia sint esse iste nam voluptatum autem placeat ratione.</label>
-	<label for="" class="message"><input type="checkbox">Nihil, consequuntur, rerum quam perspiciatis nobis ipsum a minima qui corrupti iure vero labore molestias reprehenderit quo eos odio sed ipsa sunt totam eveniet obcaecati deserunt quod incidunt ducimus fugit!</label>
-	<label for="" class="message"><input type="checkbox">Aliquam, autem consequatur consectetur suscipit unde eum quam ullam vitae quisquam similique. Sit, optio, nisi, ab voluptates alias autem explicabo eos necessitatibus eius inventore reprehenderit asperiores repellat est voluptatum ipsa?</label>
-	<label for="" class="message"><input type="checkbox">Nostrum, minus, dolore maiores ipsam repellendus accusantium quod. Reiciendis, doloremque, facilis, molestias at fuga veritatis minus optio quibusdam doloribus dolor debitis itaque voluptatum delectus sit autem laboriosam ex odit minima.</label>
-	<label for="" class="message"><input type="checkbox">Natus, cupiditate, ipsam, magnam reprehenderit excepturi inventore quam modi doloremque eum iure nisi dignissimos. Illo, nobis, voluptates, ad deserunt nihil molestiae incidunt repellat voluptatum omnis qui expedita voluptatem aliquam? Possimus.</label>
-	<label for="" class="message"><input type="checkbox">Cum praesentium aspernatur quia temporibus nobis hic impedit ad quas quaerat enim. Nihil, ipsa dolor blanditiis quis optio explicabo necessitatibus eligendi molestias maiores rerum sapiente odit consequatur labore sunt alias.</label>
-	<label for="" class="message"><input type="checkbox">Architecto, distinctio provident laudantium ipsa praesentium temporibus! In officia facere deserunt placeat consectetur nam tempora labore ut? Ipsam, explicabo, debitis fuga aliquid quam dolores veritatis quisquam voluptatum labore libero totam.</label>
-	<label for="" class="message"><input type="checkbox">Enim, eveniet, incidunt, id inventore perspiciatis a iure magni voluptatem velit vitae quos excepturi nihil possimus numquam culpa dolorum odio officiis impedit ut debitis odit aspernatur optio ab consequuntur quibusdam.</label>
-	<label for="" class="message"><input type="checkbox">Eveniet, possimus ipsam voluptatibus animi nobis quis tempore perferendis at minus in quas earum ad ut maxime dicta necessitatibus accusantium officia deleniti. Error possimus impedit ducimus nulla nesciunt? Cupiditate, incidunt.</label>
-	<label for="" class="message"><input type="checkbox">Nam, ipsa, explicabo, adipisci facere consequuntur similique debitis quod consectetur ab porro sed molestias ipsam est autem voluptatem. Distinctio, tenetur dolor ratione qui similique. Quasi quae necessitatibus assumenda commodi quo.</label>
+	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}">
+		<input type="checkbox" id="{{message.uuid}}">
+		{{message.text}}
+	</label>
 </form>

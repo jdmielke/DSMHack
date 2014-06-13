@@ -49,6 +49,7 @@ app.post("/kitten", function(req, res){
 });
 
 app.get("/api/images/list", api.list);
+app.get("/api/messages", api.messages);
 
 app.post("/hello", helloName);
 
