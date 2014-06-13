@@ -54,8 +54,8 @@
 .error {
 	display: none;
 	padding: 1em;
-	margin: 1em;
-	background: darken($pink, 15%);
+	margin: 1em 0;
+	background: darken($pink, 5%);
 	color: #fff;
 
 	&.show {

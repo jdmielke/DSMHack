@@ -397,8 +397,8 @@ a.submit {
 .error {
   display: none;
   padding: 1em;
-  margin: 1em;
-  background: #ed3428;
+  margin: 1em 0;
+  background: #f16157;
   color: #fff; }
   .error.show {
     display: block; }
