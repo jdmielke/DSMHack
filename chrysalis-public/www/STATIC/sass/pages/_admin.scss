@@ -172,38 +172,54 @@
 		padding-bottom: 10px;
 		margin-bottom: 5px;
 	}
-	.tag, .add-tag {
-		font-size: .8em;
-	}
-	.tag {
-		color: $black;
-		margin-right: 20px;
-		text-decoration: none;
-		color: $orange;
-		&:before {
-			content: '';
-			background: url(../img/icon-delete.jpg) no-repeat top left;
-			width: 12px;
-			height: 13px;
-			display: inline-block;
-			padding-right: 5px;
-		}
-	}
-	.add-tag {
-		color: $black;
-		margin-right: 20px;
-		text-decoration: none;
-		color: $orange;
-		&:before {
-			content: '';
-			background: url(../img/icon-add.jpg) no-repeat top left;
-			width: 12px;
-			height: 12px;
-			display: inline-block;
-			padding-right: 5px;
-		}
-	}
 	
+}
+
+
+.tag, .add-tag {
+	font-size: .8em;
+}
+.tag {
+	color: $black;
+	margin-right: 20px;
+	text-decoration: none;
+	color: $orange;
+	&:before {
+		content: '';
+		background: url(../img/icon-delete.jpg) no-repeat top left;
+		width: 12px;
+		height: 13px;
+		display: inline-block;
+		padding-right: 5px;
+	}
+}
+.add-tag {
+	color: $black;
+	margin-right: 20px;
+	text-decoration: none;
+	color: $orange;
+	&:before {
+		content: '';
+		background: url(../img/icon-add.jpg) no-repeat top left;
+		width: 12px;
+		height: 12px;
+		display: inline-block;
+		padding-right: 5px;
+	}
+}
+.tags {
+	float: left;
+	width: 30%;
+	.tag {
+		float: none; 
+		display: block;
+		margin-bottom: 5px;
+	}
+	input {
+		display: block;
+		float: none;
+		margin-top: 5px;
+	}
 }
 .admin-page {
 	.cards {
@@ -213,7 +229,15 @@
 	}
 }
 
-
+.card-preview {
+	width: 65%;
+	float: right;
+	@include border-radius(12px);
+	border: 8px solid $gray;
+	img {
+		width: 100%;
+	}
+}
 
 
 
@@ -301,5 +325,11 @@
 	}
 	.cards {
 		clear: both;
+	}
+	
+	.tags, .card-preview {
+		float: none;
+		width: 100%;
+		margin-bottom: 20px;
 	}
 }
