@@ -2,7 +2,9 @@ var express = require('express'),
   nodemailer = require("nodemailer"),
   passport = require('passport'), 
   LocalStrategy = require('passport-local').Strategy,
-  mongoose = require("mongoose");
+  mongoose = require("mongoose"),
+  bcrypt = require("bcrypt-nodejs"),
+  fs = require("fs");
 
 var format = require('util').format;
 
@@ -41,7 +43,7 @@ passport.use(new LocalStrategy(
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (user.password != password) {
+      if (!bcrypt.compareSync(password, user.password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -108,6 +110,29 @@ app.post("/api/images", endpoints.imagePost);
 app.post("/api/cards", endpoints.cardPost);
 app.post("/api/tags", endpoints.tagPost);
 app.get("/api/messages", api.messages);
+
+app.post("/api/images/upload", function(res, req){
+  var newImage = new models.image({
+    "name" : req.body.name,
+    "extension" : req.body.extension,
+    "tags" : req.body.tags,
+    "artist" : req.body.artist,
+    "age" : req.body.age,
+    "orientation" : "horizontal"
+  });
+  newTag.save(function (err) {
+    if (err) {
+      return console.log(err);
+    }else{
+      fs.readFile(req.files.displayImage.path, function (err, data) {
+        var newPath = __dirname + "/img/drawings/" + newTag.id + newTag.extension;
+        fs.writeFile(newPath, data, function (err) {
+          return res.send(newTag);
+        });
+      });
+    }
+  });
+});
 
 app.listen(8080, function() {
   console.log("Application started on port 8080!");
