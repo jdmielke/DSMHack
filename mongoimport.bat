@@ -1,0 +1,1 @@
+mongorestore -d chrysalis mongodump/chrysalis
