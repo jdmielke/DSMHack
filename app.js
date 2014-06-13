@@ -1,7 +1,7 @@
 var express = require('express'),
   nodemailer = require("nodemailer");
 
-var MongoClient = require('mongodb').MongoClient
+/*var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
 
 var db = MongoClient.connect('mongodb://127.0.0.1:27017/chrysalis', function(err, db) {
@@ -10,7 +10,7 @@ var db = MongoClient.connect('mongodb://127.0.0.1:27017/chrysalis', function(err
     console.log("connected to the mongoDB !");
     myCollection = db.collection('images');
 });
-
+*/
 var app = express();
 
 // configure Express
