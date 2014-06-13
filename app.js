@@ -13,7 +13,7 @@ var api = require("./server/api");
 mongoose.connect("mongodb://localhost/chrysalis");
 var db = mongoose.connection;
 
-var KittenModel = require("./server/model/Kitten")(mongoose);
+var models = require("./server/model/models")(mongoose);
 var AdminModel = require("./server/model/Admin")(mongoose);
 
 passport.serializeUser(function(user, done) {
@@ -76,27 +76,105 @@ app.get('/secure', ensureAuthenticated, function(req, res){
   return res.send("SECURE");
 });
 
-app.get("/kittens", function(req, res){
-  KittenModel.find("", function(err, data){
-    if (err) return console.error(err);
-    res.write(JSON.stringify(data));
-    res.end();
+app.get("/message", function(req, res){
+  return models.message.find("", function(err, data){
+    if (!err){ 
+      return res.send(data)
+    }
+    else{
+       return console.error(err);
+    }
+
   }); 
 });
 
-app.post("/kitten", function(req, res){
-  var newKitten = new KittenModel({
-    "name" : req.body.name
+app.get('/message/:id', function (req, res){
+  return models.message.findById(req.params.id, function (err, data) {
+    if (!err) {
+      return res.send(data);
+    } else {
+      return console.error(err);
+    }
   });
-  newKitten.save(function (err) {
+});
+
+app.post("/message", function(req, res){
+  var newTag = new models.message(req.body);
+  newTag.save(function (err) {
     if (err) {
       return console.log(err);
     }
   });
-  return res.send(newKitten);
+  return res.send(newTag);
+});
+
+
+app.get("/image", function(req, res){
+  return models.image.find("", function(err, data){
+    if (!err){ 
+      return res.send(data)
+    }
+    else{
+       return console.error(err);
+    }
+
+  }); 
+});
+
+app.get('/image/:id', function (req, res){
+  return models.image.findById(req.params.id, function (err, data) {
+    if (!err) {
+      return res.send(data);
+    } else {
+      return console.error(err);
+    }
+  });
+});
+
+app.post("/image", function(req, res){
+  var newTag = new models.image(req.body);
+  newTag.save(function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+  return res.send(newTag);
+});
+
+app.get("/tag", function(req, res){
+  return models.tag.find("", function(err, data){
+    if (!err){ 
+      return res.send(data)
+    }
+    else{
+       return console.error(err);
+    }
+
+  }); 
+});
+
+app.get('/tag/:id', function (req, res){
+  return models.tag.findById(req.params.id, function (err, data) {
+    if (!err) {
+      return res.send(data);
+    } else {
+      return console.error(err);
+    }
+  });
+});
+
+app.post("/tag", function(req, res){
+  var newTag = new models.tag(req.body);
+  newTag.save(function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+  return res.send(newTag);
 });
 
 app.get("/api/images/list", api.list);
+app.get("/api/messages", api.messages);
 
 app.post("/hello", helloName);
 

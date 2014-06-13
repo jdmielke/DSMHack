@@ -214,9 +214,20 @@ form input {
   @media all and (min-width: 30em) {
     .message {
       width: 50%; } }
-  .message input {
+  .message input[type="text"] {
+    float: none;
+    padding: 0.25em; }
+  .message input[type="checkbox"] {
     position: absolute;
     left: 0; }
+
+.message-controls {
+  border-top: 1px solid #c2c2c2;
+  margin-top: 0.5em;
+  padding-top: 0.5em; }
+  .message-controls strong {
+    font-size: 115%;
+    margin-right: 1em; }
 
 .custom-message-wrapper {
   zoom: 1; }
@@ -346,3 +357,39 @@ a.submit {
       height: 36px;
       margin: 0 auto;
       display: block; }
+
+.admin-body {
+  background: #b0ba25;
+  text-align: center;
+  padding-top: 48px; }
+  .admin-body h2 {
+    font-size: 150%;
+    color: #444;
+    font-weight: 400; }
+  .admin-body img {
+    width: 186px; }
+  .admin-body form {
+    max-width: 300px;
+    margin: 2em auto; }
+  .admin-body input {
+    display: block;
+    float: none;
+    width: 100%;
+    margin: 1em 0;
+    padding: 0.5em 0.75em; }
+  .admin-body .button {
+    width: auto;
+    margin: 0 auto; }
+
+.controls {
+  margin-bottom: 2em; }
+  .controls label {
+    font-size: 115%;
+    color: #5e6300; }
+  .controls a {
+    color: #fcb31c;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-size: 105%; }
+    .controls a:hover, .controls a:focus {
+      color: #e29903; }
