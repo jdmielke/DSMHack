@@ -14,7 +14,8 @@ module.exports = function(mongoose) {
 
 	var message = mongoose.Schema({
 		text: String,
-		tags: [tag]
+		tags: [tag],
+		published: Boolean
 	});
 	var card = mongoose.Schema({
 	  image: [image],
