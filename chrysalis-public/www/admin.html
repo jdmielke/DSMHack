@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en"  ng-app="app">
+<head>
+	<meta charset="utf-8">
+
+	<title>Chrysalis Admin - Sign in</title>
+	<meta name="description" content="Since 1989 Chrysalis is dedicated to increasing resources and opportunities for girls and women in Greater Des Moines.">
+
+	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body class="admin-body">
+	<img src="img/chrysalis_logo.png" alt="Chrysalis">
+	<h2>inspire to aspire</h2>
+
+	<form action="/admin/login" method="post">
+		<input type="text" placeholder="username" name="username">
+		<input type="password" placeholder="password" name="password">
+		<input type="submit" class="button" value="login">
+	</form>
+</body>
+</html>

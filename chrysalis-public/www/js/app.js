@@ -27,6 +27,12 @@ app.config(function($routeProvider) {
 	});
 }])
 
+.factory("MessageList", ['$resource', function($resource){
+	return $resource("api/messages", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
+
 .factory("Card", function() {
 	var card = {};
 	return card;
@@ -44,10 +50,26 @@ app.config(function($routeProvider) {
 		$scope.card = Card;
 
 		$scope.selectImage = function(image) {
-			$scope.card.selectedImage = image.uuid;
+			$scope.card.image = image;
 			$location.path("/selectMessage");
 		};
-}])
+	}]
+)
 
-.controller("SelectController", function($scope) {})
-.controller("CardHoriz", function() {});
+.controller("SelectController", ["$scope", "Card", "MessageList", "$location",
+	function($scope, Card, MessageList, $location) {
+		$scope.messages = MessageList.query();
+		$scope.card = Card;
+
+		$scope.selectMessage = function(message) {
+			$scope.card.messageText = message.text;
+			$location.path("/card-horiz");
+		};
+	}
+])
+
+.controller("CardHoriz", ["$scope", "Card",
+	function($scope, Card) {
+		$scope.card = Card;
+	}
+]);
