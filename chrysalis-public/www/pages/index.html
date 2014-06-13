@@ -5,7 +5,7 @@
 	</p>
 </div>
 <div class="cards">
-	<a href="" ng-repeat="image in imageList | filter:tag">
+	<a ng-repeat="image in imageList | filter:tag">
 		<img ng-src="{{image.url}}" ng-click="selectImage(image);">
 	</a>
 </div>

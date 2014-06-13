@@ -6,7 +6,7 @@
 </div>
 
 <form action="" class="stock-messages">
-	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}">
+	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}" ng-click="selectMessage(message)">
 		<input type="checkbox" id="{{message.uuid}}">
 		{{message.text}}
 	</label>
