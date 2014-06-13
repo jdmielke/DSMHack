@@ -3,7 +3,8 @@ var express = require('express'),
   passport = require('passport'), 
   LocalStrategy = require('passport-local').Strategy,
   mongoose = require("mongoose"),
-  bcrypt = require("bcrypt-nodejs");
+  bcrypt = require("bcrypt-nodejs"),
+  fs = require("fs");
 
 var format = require('util').format;
 
@@ -18,6 +19,14 @@ var db = mongoose.connection;
 var models = require("./server/model/models")(mongoose);
 var endpoints = require("./server/endpoints")(models);
 var AdminModel = require("./server/model/Admin")(mongoose);
+
+
+var transport = nodemailer.createTransport("Gmail",{
+    auth: {
+        user: "chrysalisecard@gmail.com",
+        pass: "dummypassword"
+    }
+});
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -77,8 +86,6 @@ app.get('/secure', ensureAuthenticated, function(req, res){
   return res.send("SECURE");
 });
 
-
-
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
 app.get("/api/tags/:id", endpoints.tagIdGet);
@@ -93,6 +100,7 @@ app.get("/api/messages/delete/:id", endpoints.messageDelete);
 app.get("/api/images/delete/:id", endpoints.imageDelete);
 app.get("/api/tags/delete/:id", endpoints.tagDelete);
 
+
 app.post("/api/tags/update/:id", endpoints.tagUpdate);
 app.post("/api/messages/update/:id", endpoints.messageUpdate);
 app.post("/api/cards/update/:id", endpoints.cardUpdate);
@@ -103,11 +111,71 @@ app.post("/api/cards", endpoints.cardPost);
 app.post("/api/tags", endpoints.tagPost);
 app.get("/api/messages", api.messages);
 
+app.post("/api/images/upload", function(res, req){
+  var newImage = new models.image({
+    "name" : req.body.name,
+    "extension" : req.body.extension,
+    "tags" : req.body.tags,
+    "artist" : req.body.artist,
+    "age" : req.body.age,
+    "orientation" : "horizontal"
+  });
+  newTag.save(function (err) {
+    if (err) {
+      return console.log(err);
+    }else{
+      fs.readFile(req.files.displayImage.path, function (err, data) {
+        var newPath = __dirname + "/img/drawings/" + newTag.id + newTag.extension;
+        fs.writeFile(newPath, data, function (err) {
+          return res.send(newTag);
+        });
+      });
+    }
+  });
+});
+
 app.listen(8080, function() {
   console.log("Application started on port 8080!");
 });
+
+app.get('/api/cards/send/:id', function(req, res){
+  models.card.findById(req.params.id, function (err, data) {
+    if (!err) {
+            
+      var senderName = data.from;
+      var senderEmail = data.fromEmail;
+      var toEmail = data.toEmail;
+
+
+
+      var subject = senderName + " has made a donation to Chrysalis in your name!";
+      var text = "Here is the link to your ecard:";
+
+      var mailOptions = {
+        from: senderEmail,
+        to: toEmail,
+        cc: senderEmail,
+        subject: subject,
+        text: text
+        }
+
+        transport.sendMail(mailOptions, function(error, response){
+          if(error){
+            res.statusCode = 500;
+            res.end();
+          }else{
+            res.end();
+          }
+        });;
+   } else {
+    return console.error(err);
+  }
+  });
+});
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/admin.html')
 }
+

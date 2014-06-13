@@ -29,7 +29,7 @@ module.exports = function(models){
      imageUpdate:  function(req, res){
       return models.image.findById(req.params.id, function (err, data) {
         data.name = req.body.name;
-        data.url = req.body.url;
+        data.extension = req.body.extension;
         data.tags = req.body.tags;
         data.artist = req.body.artist;
         data.age = req.body.age;
@@ -139,13 +139,13 @@ module.exports = function(models){
         }); 
     },
     imagePost: function(req, res){
-      var newTag = new models.image(req.body);
-      newTag.save(function (err) {
+      var newImage = new models.image(req.body);
+      newImage.save(function (err) {
         if (err) {
           return console.log(err);
         }
       });
-      return res.send(newTag);
+      return res.send(newImage);
     },
     imageIdGet: function (req, res){
       return models.image.findById(req.params.id, function (err, data) {
@@ -168,13 +168,13 @@ module.exports = function(models){
       }); 
     },
     cardPost: function(req, res){
-      var newTag = new models.card(req.body);
-      newTag.save(function (err) {
+      var newCard = new models.card(req.body);
+      newCard.save(function (err) {
         if (err) {
           return console.log(err);
         }
       });
-      return res.send(newTag);
+      return res.send(newCard);
     },
     cardIdGet: function (req, res){
       return models.card.findById(req.params.id, function (err, data) {
@@ -197,13 +197,13 @@ module.exports = function(models){
       }); 
     },
     messagePost: function(req, res){
-      var newTag = new models.message(req.body);
-      newTag.save(function (err) {
+      var newMessage = new models.message(req.body);
+      newMessage.save(function (err) {
         if (err) {
           return console.log(err);
         }
       });
-      return res.send(newTag);
+      return res.send(newMessage);
     },
     messageIdGet: function (req, res){
       return models.message.findById(req.params.id, function (err, data) {
