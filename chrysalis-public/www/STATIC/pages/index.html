@@ -1,0 +1,11 @@
+<h1>Send A Card</h1>
+<div class="send-text">
+	<p>I want to send an<form>
+	<select ng-model="tag" ng-options="tag.name for tag in tags"></select></form> card.
+	</p>
+</div>
+<div class="cards">
+	<a ng-repeat="image in imageList | filter:tag">
+		<img ng-src="{{image.url}}" ng-click="selectImage(image);">
+	</a>
+</div>

@@ -5,7 +5,7 @@ module.exports = function(mongoose) {
 	
 	var image = mongoose.Schema({
 		name: String,
-		data: String,
+		url: String,
 		tags: [tag],
 		artist: String,
 		age: Number,
@@ -14,7 +14,8 @@ module.exports = function(mongoose) {
 
 	var message = mongoose.Schema({
 		text: String,
-		tags: [tag]
+		tags: [tag],
+		published: Boolean
 	});
 	var card = mongoose.Schema({
 	  image: [image],
