@@ -6,6 +6,7 @@ var format = require('util').format;
 var app = express();
 var helloName = require("./server/helloName");
 var api = require("./server/api");
+var imagesTags = require("./server/imagesTags");
 
 var mongoose = require("mongoose");
 
@@ -50,6 +51,7 @@ app.post("/kitten", function(req, res){
 
 app.get("/api/images/list", api.list);
 app.get("/api/messages", api.messages);
+app.get("/api/images/tags", imagesTags.list);
 
 app.post("/hello", helloName);
 
