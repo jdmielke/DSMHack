@@ -60,13 +60,18 @@ app.post('/admin/login', function(req, res, next) {
     if (err) { return next(err) }
     if (!user) {
       req.session.messages =  [info.message];
-      return res.redirect('/login')
+      return res.redirect('/admin.html')
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/');
+      return res.redirect('/index.html#/admin/messages');
     });
   })(req, res, next);
+});
+
+app.get('admin/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('/unsecure', function(req, res){
