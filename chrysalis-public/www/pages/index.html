@@ -6,6 +6,6 @@
 </div>
 <div class="cards">
 	<a ng-repeat="image in imageList | filter:containsTag(tag)">
-		<img ng-src="{{image.url}}" ng-click="selectImage(image);">
+		<img ng-src="img/{{image._id}}.{{image.extension}}" ng-click="selectImage(image);">
 	</a>
 </div>

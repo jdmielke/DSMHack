@@ -16,7 +16,7 @@ app.config(function($routeProvider) {
 		controller: "CardHoriz",
 		templateUrl: "pages/card-horiz.html"
 	})
-	.when("/donation", {
+	.when("/donation/:cardid", {
 		controller: "Donation",
 		templateUrl: "pages/donation.html"
 	})
@@ -114,16 +114,15 @@ app.config(function($routeProvider) {
 
 		$scope.saveCard = function() {
 			$http.post("api/cards", $scope.card).success(function(data) {
-				$scope.card = data;
-				$location.path("/donation");
+				$location.path("/donation/" + data._id);
 			});
 		};
 	}
 ])
 
-.controller("Donation", ["$scope", "Card",
+.controller("Donation", ["$scope",
 	function($scope, Card) {
-		$scope.card = Card;
+
 	}
 ])
 
