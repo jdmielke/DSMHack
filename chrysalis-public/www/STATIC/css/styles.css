@@ -304,43 +304,34 @@ form input {
   display: block;
   float: left;
   width: 100%;
-  padding: 1em 1.5em 1em 2.5em;
-  position: relative;
-  font-size: 95%;
-  left: 0;
-  top: 0;
+  padding: 1em 1.5em .5em 0;
+  left: auto;
   height: auto;
+  position: relative;
 }
-@media all and (min-width: 30em) {
-  /* line 1, ../sass/pages/_selectMessages.scss */
-  .message {
-    width: 50%;
-  }
-}
-/* line 16, ../sass/pages/_selectMessages.scss */
-.message input[type="text"] {
-  float: none;
-  padding: 0.25em;
-}
-/* line 21, ../sass/pages/_selectMessages.scss */
+/* line 9, ../sass/pages/_selectMessages.scss */
 .message input[type="checkbox"] {
-  position: absolute;
-  left: 0;
+  float: left;
+}
+/* line 12, ../sass/pages/_selectMessages.scss */
+.message p {
+  padding-left: 34px;
+  line-height: 1.4em;
 }
 
-/* line 27, ../sass/pages/_selectMessages.scss */
+/* line 18, ../sass/pages/_selectMessages.scss */
 .message-controls {
   border-top: 1px solid #c2c2c2;
   margin-top: 0.5em;
   padding-top: 0.5em;
 }
-/* line 32, ../sass/pages/_selectMessages.scss */
+/* line 22, ../sass/pages/_selectMessages.scss */
 .message-controls strong {
   font-size: 115%;
   margin-right: 1em;
 }
 
-/* line 38, ../sass/pages/_selectMessages.scss */
+/* line 28, ../sass/pages/_selectMessages.scss */
 .custom-message-wrapper {
   zoom: 1;
 }
@@ -355,11 +346,11 @@ form input {
 .custom-message-wrapper:after {
   clear: both;
 }
-/* line 41, ../sass/pages/_selectMessages.scss */
+/* line 31, ../sass/pages/_selectMessages.scss */
 .custom-message-wrapper textarea, .custom-message-wrapper button {
   float: left;
 }
-/* line 45, ../sass/pages/_selectMessages.scss */
+/* line 35, ../sass/pages/_selectMessages.scss */
 .custom-message-wrapper textarea {
   width: 100%;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -367,19 +358,20 @@ form input {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   border-color: #ccc;
   resize: none;
+  padding: 15px;
 }
 @media all and (min-width: 30em) {
-  /* line 45, ../sass/pages/_selectMessages.scss */
+  /* line 35, ../sass/pages/_selectMessages.scss */
   .custom-message-wrapper textarea {
     width: 50%;
   }
 }
-/* line 56, ../sass/pages/_selectMessages.scss */
+/* line 46, ../sass/pages/_selectMessages.scss */
 .custom-message-wrapper button {
   margin: 0.5em 1em;
 }
 
-/* line 61, ../sass/pages/_selectMessages.scss */
+/* line 51, ../sass/pages/_selectMessages.scss */
 .stock-messages {
   zoom: 1;
   margin-bottom: 4em;
