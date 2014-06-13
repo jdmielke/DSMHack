@@ -27,6 +27,12 @@ app.config(function($routeProvider) {
 	});
 }])
 
+.factory("MessageList", ['$resource', function($resource){
+	return $resource("api/messages", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
+
 .factory("Card", function() {
 	var card = {};
 	return card;
@@ -49,5 +55,8 @@ app.config(function($routeProvider) {
 		};
 }])
 
-.controller("SelectController", function($scope) {})
+.controller("SelectController", ["$scope", "MessageList",
+	function($scope, MessageList) {
+		$scope.messages = MessageList.query();
+}])
 .controller("CardHoriz", function() {});
