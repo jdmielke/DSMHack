@@ -1,11 +1,17 @@
 var express = require('express'),
   nodemailer = require("nodemailer");
 
-var MongoClient = require('mongodb').MongoClient,
-	format = require('util').format;
+var format = require('util').format;
 
 var app = express();
 var helloName = require("./server/helloName");
+
+var mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/chrysalis");
+var db = mongoose.connection;
+
+var KittenModel = require("./server/model/Kitten")(mongoose);
 
 // configure Express
 app.configure(function() {
@@ -21,50 +27,24 @@ app.configure(function() {
   app.use(express.logger());
 });
 
-app.get('/images', function(req, res){
-  var cursor = myCollection.find({"name":"blah"});
-  cursor.each(function(err, doc) {
-	if(err)
-		throw err;
-	if(doc==null)
-		return;
-
-	console.log("document find:");
-	console.log(doc.name);
-  });
+app.get("/kittens", function(req, res){
+  KittenModel.find("", function(err, data){
+    if (err) return console.error(err);
+    res.write(JSON.stringify(data));
+    res.end();
+  }); 
 });
 
-app.get("/test", function(req, res){
-	var mongoose = require("mongoose");
-
-	mongoose.connect("mongodb://localhost/chrysalis");
-	var db = mongoose.connection;
-
-
-	db.on("error", console.error.bind(console, "connection error:"));
-	db.once("open", function callback (data) {
-		console.log("open");
-		console.log(data);
-	});
-
-	var kittySchema = mongoose.Schema({
-		name: String
-	});
-
-	var Kitten = mongoose.model("testdata", kittySchema);
-	var lilBub = new Kitten({ name: "Lil Bub" });
-
-	lilBub.save(function(err, lilBub){
-		if (err) return console.error(err);
-
-		Kitten.find("", function(err, data){
-			console.log("Idk");
-			if (err) return console.error(err);
-			console.log(data);
-			db.close();
-		});		
-	});
-
+app.post("/kitten", function(req, res){
+  var newKitten = new KittenModel({
+    "name" : req.body.name
+  });
+  newKitten.save(function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+  return res.send(newKitten);
 });
 
 app.post("/hello", helloName);
