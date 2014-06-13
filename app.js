@@ -12,6 +12,7 @@ var db = MongoClient.connect('mongodb://127.0.0.1:27017/chrysalis', function(err
 });
 */
 var app = express();
+var helloName.require("./server/helloName");
 
 // configure Express
 app.configure(function() {
@@ -39,6 +40,8 @@ app.get('/images', function(req, res){
     console.log(doc.name);
   });
 });
+
+app.post("/hello", helloName);
 
 app.listen(8080, function() {
   console.log("Application started on port 8080!");
