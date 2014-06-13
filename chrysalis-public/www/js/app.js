@@ -26,7 +26,7 @@ app.config(function($routeProvider) {
 })
 
 .factory("ImageList", ['$resource', function($resource){
-	return $resource("api/images/list", {}, {
+	return $resource("api/images", {}, {
 		query: {method: "GET", isArray:true}
 	});
 }])
@@ -58,6 +58,23 @@ app.config(function($routeProvider) {
 		$scope.selectImage = function(image) {
 			$scope.card.image = image;
 			$location.path("/selectMessage");
+		};
+
+		$scope.containsTag = function(tag) {
+			return function(image) {
+				var contains = false;
+				
+				if ($scope.tag == "") {
+					return true;
+				}
+
+				angular.forEach(image.tags, function(imgtag) {
+					if (imgtag.name == $scope.tag.name) {
+						contains = true;
+					}
+				});
+				return contains;
+			}
 		};
 	}]
 )

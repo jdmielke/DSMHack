@@ -146,7 +146,7 @@ module.exports = function(models){
       return res.send(newTag);
     },
     imageIdGet: function (req, res){
-      return models.image.findById(req.params.id, function (err, data) {
+      return models.image.findById(req.params.id, { skip: 10, limit: 5 }, function (err, data) {
         if (!err) {
           return res.send(data);
         } else {
@@ -155,7 +155,7 @@ module.exports = function(models){
       });
     },
     imageGet: function(req, res){
-      return models.image.find("", function(err, data){
+      return models.image.find("", { skip: 10, limit: 5 }, function(err, data){
         if (!err){ 
           return res.send(data)
         }
