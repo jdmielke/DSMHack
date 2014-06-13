@@ -120,6 +120,9 @@ app.post("/api/images/upload", function(req, res){
       fs.readFile(req.files.imageUpload.path, function (err, data) {
         var newPath = __dirname + "\\chrysalis-public\\www\\img\\drawings\\" + newImage.id + '.' + newImage.extension;
         fs.writeFile(newPath, data, function (err) {
+          if (err) {
+            console.log(err);
+          }
           return res.send(newImage);
         });
       });
