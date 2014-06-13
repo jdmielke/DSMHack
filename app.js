@@ -20,6 +20,14 @@ var models = require("./server/model/models")(mongoose);
 var endpoints = require("./server/endpoints")(models);
 var AdminModel = require("./server/model/Admin")(mongoose);
 
+
+var transport = nodemailer.createTransport("Gmail",{
+    auth: {
+        user: "chrysalisecard@gmail.com",
+        pass: "dummypassword"
+    }
+});
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -92,6 +100,7 @@ app.get("/api/messages/delete/:id", endpoints.messageDelete);
 app.get("/api/images/delete/:id", endpoints.imageDelete);
 app.get("/api/tags/delete/:id", endpoints.tagDelete);
 
+
 app.post("/api/tags/update/:id", endpoints.tagUpdate);
 app.post("/api/messages/update/:id", endpoints.messageUpdate);
 app.post("/api/cards/update/:id", endpoints.cardUpdate);
@@ -122,7 +131,44 @@ app.listen(8080, function() {
   console.log("Application started on port 8080!");
 });
 
+app.get('/api/cards/send/:id', function(req, res){
+  models.card.findById(req.params.id, function (err, data) {
+    if (!err) {
+            
+      var senderName = data.from;
+      var senderEmail = data.fromEmail;
+      var toEmail = data.toEmail;
+
+
+
+      var subject = senderName + " has made a donation to Chrysalis in your name!";
+      var text = "Here is the link to your ecard:";
+
+      var mailOptions = {
+        from: senderEmail,
+        to: toEmail,
+        cc: senderEmail,
+        subject: subject,
+        text: text
+        }
+
+        transport.sendMail(mailOptions, function(error, response){
+          if(error){
+            res.statusCode = 500;
+            res.end();
+          }else{
+            res.end();
+          }
+        });;
+   } else {
+    return console.error(err);
+  }
+  });
+});
+
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/admin.html')
 }
+
