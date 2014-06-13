@@ -120,9 +120,9 @@ app.config(function($routeProvider) {
 	}
 ])
 
-.controller("Donation", ["$scope",
-	function($scope, Card) {
-
+.controller("Donation", ["$scope", "$routeParams",
+	function($scope, $routeParams) {
+		$scope.cardid = $routeParams.cardid;
 	}
 ])
 
