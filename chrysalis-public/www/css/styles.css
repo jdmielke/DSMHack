@@ -1,0 +1,199 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1em; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* ////////////////////////////////////////////// General styles */
+h1 {
+  color: #5e6300;
+  font-size: 1.8em;
+  margin-bottom: 20px; }
+
+/* ////////////////////////////////////////////// Layout styles */
+.header-top {
+  border-bottom: 2px solid #b0ba25;
+  background-color: #b0ba25;
+  overflow: hidden;
+  width: 100%; }
+  .header-top .header-top-inside {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 0 20px; }
+    .header-top .header-top-inside .logo {
+      display: block;
+      float: left;
+      width: 99px;
+      height: 80px;
+      text-indent: -9999em;
+      background: url(../img/chrysalis_logo.png) no-repeat top left; }
+    .header-top .header-top-inside p {
+      float: right;
+      background: #5e6300;
+      padding: 20px;
+      color: white;
+      -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+
+.header-bottom {
+  background-color: #bfc841;
+  border-top: 1px solid #a7af39;
+  color: #89901b;
+  font-size: 1.25em;
+  padding: 10px 0;
+  -webkit-box-shadow: inset 0 2px 3px #b0ba25;
+  -moz-box-shadow: inset 0 2px 3px #b0ba25;
+  box-shadow: inset 0 2px 3px #b0ba25; }
+  .header-bottom .header-bottom-inside {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px; }
+
+.content {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 40px 20px 0 20px; }
+
+.footer-wrapper {
+  clear: both;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 2em 0 1em;
+  background-color: #b0ba25;
+  color: white;
+  font-size: .8em;
+  font-weight: 300px; }
+  .footer-wrapper .footer {
+    max-width: 1024px;
+    margin: 0 auto; }
+    .footer-wrapper .footer p {
+      color: #89901b;
+      font-size: 3em;
+      font-weight: 400px;
+      padding-top: 1.25em;
+      float: left; }
+
+.navigation {
+  float: right; }
+  .navigation ul {
+    float: left;
+    width: 50%; }
+    .navigation ul li {
+      list-style-type: none; }
+      .navigation ul li a {
+        text-decoration: none;
+        color: white;
+        font: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  .navigation ul.right {
+    padding-left: .5em; }
+  .navigation ul.left {
+    text-align: right;
+    border-right: 1px solid #89901b;
+    padding-right: .5em; }
+
+/* ////////////////////////////////////////////// Home styles */
+.send-text {
+  margin-bottom: 40px; }
+  .send-text p {
+    float: left;
+    padding-top: 3px; }
+  .send-text form {
+    float: left;
+    margin: 0 10px; }
+
+.cards img {
+  width: 155px;
+  height: 155px;
+  float: left;
+  border: 8px solid #d7d7d7;
+  display: block;
+  margin: 0 40px 40px 0;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px; }
