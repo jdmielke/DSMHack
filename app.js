@@ -91,6 +91,8 @@ app.get("/api/tags/delete/:id", endpoints.tagDelete);
 
 app.post("/api/tags/update/:id", endpoints.tagUpdate);
 app.post("/api/messages/update/:id", endpoints.messageUpdate);
+app.post("/api/cards/update/:id", endpoints.cardUpdate);
+app.post("/api/images/update/:id", endpoints.imageUpdate);
 app.post("/api/messages", endpoints.messagePost);
 app.post("/api/images", endpoints.imagePost);
 app.post("/api/cards", endpoints.cardPost);
