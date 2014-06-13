@@ -95,7 +95,7 @@ app.config(function($routeProvider) {
 	function($scope, Card, MessageList, $location) {
 		$scope.messages = MessageList.query();
 		$scope.card = Card;
-		
+
 		$scope.setSelectMessage = function(message) {
 			$scope.card.messageText = message.text;
 			$location.path("/card-horiz");
@@ -108,7 +108,20 @@ app.config(function($routeProvider) {
 	}
 ])
 
-.controller("CardHoriz", ["$scope", "Card",
+.controller("CardHoriz", ["$scope", "Card", "$http", "$location",
+	function($scope, Card, $http, $location) {
+		$scope.card = Card;
+
+		$scope.saveCard = function() {
+			$http.post("api/cards", $scope.card).success(function(data) {
+				$scope.card = data;
+				$location.path("/donation");
+			});
+		};
+	}
+])
+
+.controller("Donation", ["$scope", "Card",
 	function($scope, Card) {
 		$scope.card = Card;
 	}
