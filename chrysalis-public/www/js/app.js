@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
 		controller: "SelectController",
 		templateUrl: "pages/selectMessage.html"
 	})
+	.when("/card-horiz", {
+		controller: "CardHoriz",
+		templateUrl: "pages/card-horiz.html"
+	})
 	.otherwise({
 		redirectTo:  "/"
 	});

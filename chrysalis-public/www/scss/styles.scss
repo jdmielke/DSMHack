@@ -1,6 +1,5 @@
 @import 'reset';
 @import 'variables';
-@import "selectMessages";
 @import "button";
 
 body {
@@ -22,7 +21,20 @@ h1 {
 }
 
 
-
+form {
+	label {
+		left: 99999em;
+		top: auto;
+		display: block;
+		width: 1px;
+		height: 1px;
+		position: absolute;
+	}
+	input {
+		float: left;
+		margin-right: 20px;
+	}
+}
 /* ////////////////////////////////////////////// Layout styles */
 
 .header-top {
@@ -117,29 +129,7 @@ h1 {
 	}
 }
 
-
-/* ////////////////////////////////////////////// Home styles */
-
-.send-text {
-	margin-bottom: 40px;
-	p {
-		float: left;
-		padding-top: 3px;
-	}
-	form {
-		float: left;
-		margin: 0 10px;
-	}
-}
-.cards {
-	img {
-		width: 155px;
-		height: 155px;
-		float: left;
-		border: 8px solid $gray;
-		display: block;
-		margin: 0 40px 40px 0;
-		@include border-radius(12px)
-	}
-}
+@import "selectMessages";
+@import "home";
+@import "card";
 
