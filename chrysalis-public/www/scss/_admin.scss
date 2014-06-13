@@ -50,3 +50,15 @@
 		}
 	}
 }
+
+.error {
+	display: none;
+	padding: 1em;
+	margin: 1em;
+	background: darken($pink, 15%);
+	color: #fff;
+
+	&.show {
+		display: block;
+	}
+}

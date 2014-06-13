@@ -42,15 +42,17 @@ app.config(function($routeProvider) {
 	return card;
 })
 
-.controller("IndexController", ["$scope", "ImageList", "Card", "$location",
-	function($scope, ImageList, Card, $location) {
+.factory("Tags", ['$resource', function($resource){
+	return $resource("api/tags", {}, {
+		query: {method: "GET", isArray:true}
+	});
+}])
+
+.controller("IndexController", ["$scope", "ImageList", "Card", "Tags", "$location",
+	function($scope, ImageList, Card, Tags, $location) {
 		$scope.imageList = ImageList.query();
 		$scope.tag = "";
-		$scope.tags = [
-			"",
-			"Anniversary",
-			"Birthday"
-		];
+		$scope.tags = Tags.query();
 		$scope.card = Card;
 
 		$scope.selectImage = function(image) {
@@ -83,14 +85,10 @@ app.config(function($routeProvider) {
 	}
 ])
 
-.controller("AdminMessages", ["$scope", "MessageList",
-	function($scope, MessageList) {
+.controller("AdminMessages", ["$scope", "MessageList", "Tags",
+	function($scope, MessageList, Tags) {
 		$scope.tag = "";
-		$scope.tags = [
-			"",
-			"Anniversary",
-			"Birthday"
-		];
+		$scope.tags = Tags.query();
 		$scope.messages = MessageList.query();
 	}]
 );
