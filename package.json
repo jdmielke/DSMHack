@@ -9,7 +9,8 @@
     "passport": ">= 0.0.0",
     "passport-local": ">= 0.0.0",
     "nodemailer": "~0.6.3",
-    "mongodb": "*"
+    "mongodb": "*",
+    "mongoose": "*"
   },
   "devDependencies": {
     "grunt-contrib-sass": "~0.7.3",
