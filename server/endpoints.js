@@ -29,7 +29,7 @@ module.exports = function(models){
      imageUpdate:  function(req, res){
       return models.image.findById(req.params.id, function (err, data) {
         data.name = req.body.name;
-        data.url = req.body.url;
+        data.extension = req.body.extension;
         data.tags = req.body.tags;
         data.artist = req.body.artist;
         data.age = req.body.age;
