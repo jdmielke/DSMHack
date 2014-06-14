@@ -27,6 +27,10 @@ app.config(function($routeProvider) {
 		controller: "AdminMessages",
 		templateUrl: "pages/adminMessages.html"
 	})
+	.when("/admin/images", {
+		controller: "AdminImages",
+		templateUrl: "pages/adminImages.html"
+	})
 	.when("/ecard/:cardid", {
 		controller: "Ecard",
 		templateUrl: "pages/ecard.html"
@@ -225,4 +229,40 @@ app.config(function($routeProvider) {
 			};
 		};
 	}]
+
+
+.controller("AdminImages", ["$scope", "ImageList", "Tags", "$http", "$location",
+	function($scope, ImageList, Tags, $http, $location, $q) {
+		$scope.showAdminTabs = true;
+		$scope.selection = [];
+		$scope.newImage = {};
+		$location.path('/admin/images');
+		$scope.tag = {
+			name: "General Occasion"
+		};
+		Tags.query().$promise.then(function(tags) {
+			tags.unshift($scope.tag);
+			$scope.tags = tags;
+		});
+		$scope.images = ImageList.query();
+
+		$scope.toggleSelection = function(image) {
+		    var idx = $scope.selection.indexOf(image._id);
+		    if (idx > -1) {
+		      $scope.selection.splice(idx, 1);
+		    } else {
+		      $scope.selection.push(image._id);
+		    }
+		  };
+
+		$scope.editSelectedImages = function(){
+			var promise = $scope.selection.indexOf(image._id);
+
+			$http.get("admin/images/edit/" + promise);
+		};
+	}]
+
+
+
+
 );
