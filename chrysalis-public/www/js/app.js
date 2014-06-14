@@ -162,7 +162,7 @@ app.config(function($routeProvider) {
 	function($scope, MessageList, Tags, $http, $location, $q) {
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
-		$scope.newTag = {};
+		$scope.newMessage = {};
 		$scope.tag = {
 			name: "General Occasion"
 		};
