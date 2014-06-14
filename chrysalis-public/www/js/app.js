@@ -135,6 +135,7 @@ app.config(function($routeProvider) {
 .controller("Donation", ["$scope", "$routeParams",
 	function($scope, $routeParams) {
 		$scope.cardid = $routeParams.cardid;
+		$scope.paypal = "5VYV4XB5D3NV2";
 	}
 ])
 

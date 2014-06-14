@@ -158,23 +158,6 @@
 		text-transform: uppercase;
 	}
 }
-.message {
-	clear: both;
-	margin-bottom: 50px;
-	max-width: 300px;
-	input[type="checkbox"] {
-		float: left;
-		margin-right: 5px;
-	}
-	p {
-		padding-left: 21px;
-		border-bottom: 1px solid $gray;
-		padding-bottom: 10px;
-		margin-bottom: 5px;
-	}
-	
-}
-
 
 .tag, .add-tag {
 	font-size: .8em;
