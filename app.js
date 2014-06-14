@@ -4,7 +4,8 @@ var express = require('express'),
   LocalStrategy = require('passport-local').Strategy,
   mongoose = require("mongoose"),
   bcrypt = require("bcrypt-nodejs"),
-  fs = require("fs");
+  fs = require("fs"),
+  path = require("path");
 
 var format = require('util').format;
 
@@ -17,7 +18,7 @@ mongoose.connect("54.187.178.36:27017/chrysalis");
 var db = mongoose.connection;
 
 var models = require(__dirname + "/server/Model/models")(mongoose);
-var endpoints = require(__dirname + "/server/endpoints")(models, fs);
+var endpoints = require(__dirname + "/server/endpoints")(models, fs, path);
 var AdminModel = require(__dirname + "/server/Model/Admin")(mongoose);
 
 
@@ -118,7 +119,7 @@ app.post("/api/images/upload", function(req, res){
       return console.log(err);
     }else{
       fs.readFile(req.files.imageUpload.path, function (err, data) {
-        var newPath = __dirname + "..\\chrysalis-public\\www\\img\\drawings\\" + newImage.id + '.' + newImage.extension;
+        var newPath = __dirname + "\\chrysalis-public\\www\\img\\drawings\\" + newImage.id + '.' + newImage.extension;
         fs.writeFile(newPath, data, function (err) {
           if (err) {
             console.log(err);
