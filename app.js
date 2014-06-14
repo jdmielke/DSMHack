@@ -127,8 +127,9 @@ app.post("/api/images/upload", function(req, res){
           if (err) {
             console.log(err);
           }
-          return res.send(newImage);
-          // should do a redirect to the admin single image view
+          res.send(newImage);
+          //NEED TO CHANGE LINK TO SINGLE IMAGE EDIT
+          res.redirect("/#/admin/messages");
         });
       });
     }
