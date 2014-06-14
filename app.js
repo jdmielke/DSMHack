@@ -146,24 +146,26 @@ app.get('/api/cards/send/:id', function(req, res){
 
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
-      var text = "Here is the link to your ecard:";
+      var text = "Here is the link to your ecard:" +
+        "<a href=\"http://54.187.178.36:8080/#/ecard/" +
+        req.params.id + "\">Chrysalis ecard</a>";
 
       var mailOptions = {
         from: senderEmail,
         to: toEmail,
         cc: senderEmail,
         subject: subject,
-        text: text
-        }
+        html: text
+      };
 
         transport.sendMail(mailOptions, function(error, response){
           if(error){
             res.statusCode = 500;
             res.end();
           }else{
-            res.end();
+            res.redirect("/#/sent");
           }
-        });;
+        });
    } else {
     return console.error(err);
   }
@@ -173,6 +175,6 @@ app.get('/api/cards/send/:id', function(req, res){
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/admin.html')
+  res.redirect('/admin.html');
 }
 
