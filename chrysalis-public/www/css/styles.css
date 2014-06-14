@@ -108,7 +108,7 @@ input, select {
 }
 
 /* line 1, ../sass/modules/_button.scss */
-.button, .submit {
+button, .button, .submit {
   padding: 0.5em 1em;
   border-radius: 0;
   background-color: #fcb31c;
@@ -121,7 +121,7 @@ input, select {
   text-transform: lowercase;
 }
 /* line 14, ../sass/modules/_button.scss */
-.button:hover, .button:focus, .submit:hover, .submit:focus {
+button:hover, button:focus, .button:hover, .button:focus, .submit:hover, .submit:focus {
   background-color: #fcbb35;
 }
 
@@ -235,16 +235,21 @@ form input {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 20px;
+  height: 25px;
+}
+/* line 101, ../sass/styles.scss */
+.header-bottom .header-bottom-inside p.tagline {
+  float: left;
 }
 
-/* line 103, ../sass/styles.scss */
+/* line 107, ../sass/styles.scss */
 .content {
   max-width: 1024px;
   margin: 0 auto;
   padding: 40px 20px 0 20px;
 }
 
-/* line 109, ../sass/styles.scss */
+/* line 113, ../sass/styles.scss */
 .footer-wrapper {
   clear: both;
   line-height: 1.5;
@@ -255,12 +260,12 @@ form input {
   font-size: .8em;
   font-weight: 300;
 }
-/* line 118, ../sass/styles.scss */
+/* line 122, ../sass/styles.scss */
 .footer-wrapper .footer {
   max-width: 1024px;
   margin: 0 auto;
 }
-/* line 121, ../sass/styles.scss */
+/* line 125, ../sass/styles.scss */
 .footer-wrapper .footer p {
   color: #89901b;
   font-size: 3em;
@@ -269,30 +274,30 @@ form input {
   float: left;
 }
 
-/* line 130, ../sass/styles.scss */
+/* line 134, ../sass/styles.scss */
 .navigation {
   float: right;
 }
-/* line 132, ../sass/styles.scss */
+/* line 136, ../sass/styles.scss */
 .navigation ul {
   float: left;
   width: 50%;
 }
-/* line 135, ../sass/styles.scss */
+/* line 139, ../sass/styles.scss */
 .navigation ul li {
   list-style-type: none;
 }
-/* line 137, ../sass/styles.scss */
+/* line 141, ../sass/styles.scss */
 .navigation ul li a {
   text-decoration: none;
   color: white;
   font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-/* line 144, ../sass/styles.scss */
+/* line 148, ../sass/styles.scss */
 .navigation ul.right {
   padding-left: .5em;
 }
-/* line 147, ../sass/styles.scss */
+/* line 151, ../sass/styles.scss */
 .navigation ul.left {
   text-align: right;
   border-right: 1px solid #89901b;
@@ -334,14 +339,14 @@ form input {
 .custom-message-wrapper {
   zoom: 1;
 }
-/* line 49, ../sass/base/_variables.scss */
+/* line 50, ../sass/base/_variables.scss */
 .custom-message-wrapper:before, .custom-message-wrapper:after {
   content: "\0020";
   display: block;
   height: 0;
   overflow: hidden;
 }
-/* line 55, ../sass/base/_variables.scss */
+/* line 56, ../sass/base/_variables.scss */
 .custom-message-wrapper:after {
   clear: both;
 }
@@ -375,14 +380,14 @@ form input {
   zoom: 1;
   margin-bottom: 4em;
 }
-/* line 49, ../sass/base/_variables.scss */
+/* line 50, ../sass/base/_variables.scss */
 .stock-messages:before, .stock-messages:after {
   content: "\0020";
   display: block;
   height: 0;
   overflow: hidden;
 }
-/* line 55, ../sass/base/_variables.scss */
+/* line 56, ../sass/base/_variables.scss */
 .stock-messages:after {
   clear: both;
 }
@@ -601,27 +606,308 @@ a.submit {
   }
 }
 /* line 1, ../sass/pages/_admin.scss */
+.login-wrapper {
+  background: #b0ba25;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 6, ../sass/pages/_admin.scss */
+.login {
+  background: #b0ba25;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+/* line 17, ../sass/pages/_admin.scss */
+.login img {
+  margin: 0 auto;
+  display: block;
+}
+/* line 22, ../sass/pages/_admin.scss */
+.login form input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* line 26, ../sass/pages/_admin.scss */
+.login form button {
+  display: block;
+  margin: 0 auto;
+  float: none;
+  width: 100px;
+}
+
+/* line 38, ../sass/pages/_admin.scss */
+.admin-page .header-bottom {
+  overflow: hidden;
+  padding: 0;
+}
+/* line 41, ../sass/pages/_admin.scss */
+.admin-page .header-bottom p {
+  padding: 10px 0 0;
+}
+
+/* line 47, ../sass/pages/_admin.scss */
+.tabs {
+  float: right;
+}
+/* line 49, ../sass/pages/_admin.scss */
+.tabs .tab {
+  float: left;
+  width: 120px;
+  padding: 10px 10px;
+  text-align: center;
+  background: #dfe747;
+}
+/* line 55, ../sass/pages/_admin.scss */
+.tabs .tab a {
+  text-transform: lowercase;
+  color: #5e6300;
+  font-size: .8em;
+  text-decoration: none;
+}
+/* line 61, ../sass/pages/_admin.scss */
+.tabs .tab.active {
+  background: white;
+}
+
+/* line 66, ../sass/pages/_admin.scss */
+.options {
+  margin-bottom: 50px;
+}
+/* line 68, ../sass/pages/_admin.scss */
+.options p {
+  float: left;
+  color: #5e6300;
+  margin-right: 10px;
+}
+/* line 73, ../sass/pages/_admin.scss */
+.options select {
+  float: left;
+  margin-right: 20px;
+}
+/* line 77, ../sass/pages/_admin.scss */
+.options .delete {
+  color: #333333;
+  text-decoration: none;
+  margin-right: 20px;
+  color: #fcb31c;
+}
+/* line 82, ../sass/pages/_admin.scss */
+.options .delete:before {
+  content: '';
+  background: url(../img/icon-delete.jpg) no-repeat top left;
+  width: 12px;
+  height: 13px;
+  display: inline-block;
+  padding-right: 5px;
+}
+/* line 91, ../sass/pages/_admin.scss */
+.options .unpublish {
+  color: #333333;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fcb31c;
+}
+/* line 96, ../sass/pages/_admin.scss */
+.options .unpublish:before {
+  content: '';
+  background: url(../img/icon-unpublish.jpg) no-repeat top left;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  padding-right: 5px;
+}
+/* line 105, ../sass/pages/_admin.scss */
+.options .new-message {
+  clear: both;
+  width: 300px;
+  margin: 40px 0 0;
+}
+/* line 109, ../sass/pages/_admin.scss */
+.options .new-message h2 {
+  color: #b0ba25;
+  margin-bottom: 20px;
+}
+/* line 113, ../sass/pages/_admin.scss */
+.options .new-message textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+/* line 118, ../sass/pages/_admin.scss */
+.options .new-message .button {
+  clear: both;
+}
+/* line 122, ../sass/pages/_admin.scss */
+.options .edit {
+  color: #333333;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fcb31c;
+}
+/* line 127, ../sass/pages/_admin.scss */
+.options .edit:before {
+  content: '';
+  background: url(../img/icon-editmode.jpg) no-repeat top left;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  padding-right: 5px;
+}
+/* line 136, ../sass/pages/_admin.scss */
+.options .view-unpublished {
+  color: #333333;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fcb31c;
+}
+/* line 141, ../sass/pages/_admin.scss */
+.options .view-unpublished:before {
+  content: '';
+  background: url(../img/icon-ViewUnpublished.png) no-repeat top left;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+/* line 152, ../sass/pages/_admin.scss */
+.flash-message {
+  background: #f3776f;
+  padding: 10px 0;
+}
+/* line 155, ../sass/pages/_admin.scss */
+.flash-message p {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* line 161, ../sass/pages/_admin.scss */
+.message {
+  clear: both;
+  margin-bottom: 50px;
+  max-width: 300px;
+}
+/* line 165, ../sass/pages/_admin.scss */
+.message input[type="checkbox"] {
+  float: left;
+  margin-right: 5px;
+}
+/* line 169, ../sass/pages/_admin.scss */
+.message p {
+  padding-left: 21px;
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+/* line 179, ../sass/pages/_admin.scss */
+.tag, .add-tag {
+  font-size: .8em;
+}
+
+/* line 182, ../sass/pages/_admin.scss */
+.tag {
+  color: #333333;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fcb31c;
+}
+/* line 187, ../sass/pages/_admin.scss */
+.tag:before {
+  content: '';
+  background: url(../img/icon-delete.jpg) no-repeat top left;
+  width: 12px;
+  height: 13px;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+/* line 196, ../sass/pages/_admin.scss */
+.add-tag {
+  color: #333333;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fcb31c;
+}
+/* line 201, ../sass/pages/_admin.scss */
+.add-tag:before {
+  content: '';
+  background: url(../img/icon-add.jpg) no-repeat top left;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+/* line 210, ../sass/pages/_admin.scss */
+.tags {
+  float: left;
+  width: 30%;
+}
+/* line 213, ../sass/pages/_admin.scss */
+.tags .tag {
+  float: none;
+  display: block;
+  margin-bottom: 5px;
+}
+/* line 218, ../sass/pages/_admin.scss */
+.tags input {
+  display: block;
+  float: none;
+  margin-top: 5px;
+}
+
+/* line 226, ../sass/pages/_admin.scss */
+.admin-page .cards a.selected {
+  border: 8px solid #b0ba25;
+}
+
+/* line 232, ../sass/pages/_admin.scss */
+.card-preview {
+  width: 65%;
+  float: right;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
+  border: 8px solid #d7d7d7;
+}
+/* line 237, ../sass/pages/_admin.scss */
+.card-preview img {
+  width: 100%;
+}
+
+/* line 244, ../sass/pages/_admin.scss */
 .admin-body {
   background: #b0ba25;
   text-align: center;
   padding-top: 48px;
 }
-/* line 6, ../sass/pages/_admin.scss */
+/* line 249, ../sass/pages/_admin.scss */
 .admin-body h2 {
   font-size: 150%;
   color: #444;
   font-weight: 400;
 }
-/* line 12, ../sass/pages/_admin.scss */
+/* line 255, ../sass/pages/_admin.scss */
 .admin-body img {
   width: 186px;
 }
-/* line 16, ../sass/pages/_admin.scss */
+/* line 259, ../sass/pages/_admin.scss */
 .admin-body form {
   max-width: 300px;
   margin: 2em auto;
 }
-/* line 20, ../sass/pages/_admin.scss */
+/* line 263, ../sass/pages/_admin.scss */
 .admin-body input {
   display: block;
   float: none;
@@ -629,34 +915,34 @@ a.submit {
   margin: 1em 0;
   padding: 0.5em 0.75em;
 }
-/* line 28, ../sass/pages/_admin.scss */
+/* line 271, ../sass/pages/_admin.scss */
 .admin-body .button {
   width: auto;
   margin: 0 auto;
 }
 
-/* line 35, ../sass/pages/_admin.scss */
+/* line 278, ../sass/pages/_admin.scss */
 .controls {
   margin-bottom: 2em;
 }
-/* line 37, ../sass/pages/_admin.scss */
+/* line 280, ../sass/pages/_admin.scss */
 .controls label {
   font-size: 115%;
   color: #5e6300;
 }
-/* line 41, ../sass/pages/_admin.scss */
+/* line 284, ../sass/pages/_admin.scss */
 .controls a {
   color: #fcb31c;
   text-decoration: none;
   padding: 0.5em 1em;
   font-size: 105%;
 }
-/* line 48, ../sass/pages/_admin.scss */
+/* line 291, ../sass/pages/_admin.scss */
 .controls a:hover, .controls a:focus {
   color: #e29903;
 }
 
-/* line 54, ../sass/pages/_admin.scss */
+/* line 297, ../sass/pages/_admin.scss */
 .error {
   display: none;
   padding: 1em;
@@ -664,11 +950,45 @@ a.submit {
   background: #f16157;
   color: #fff;
 }
-/* line 61, ../sass/pages/_admin.scss */
+/* line 304, ../sass/pages/_admin.scss */
 .error.show {
   display: block;
 }
 
+@media all and (max-width: 550px) {
+  /* line 310, ../sass/pages/_admin.scss */
+  .options {
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+  /* line 313, ../sass/pages/_admin.scss */
+  .options p {
+    margin-bottom: 10px;
+  }
+  /* line 316, ../sass/pages/_admin.scss */
+  .options .delete, .options .unpublish {
+    clear: left;
+    display: block;
+    margin-bottom: 10px;
+  }
+  /* line 321, ../sass/pages/_admin.scss */
+  .options .button {
+    display: block;
+    float: left;
+  }
+
+  /* line 326, ../sass/pages/_admin.scss */
+  .cards {
+    clear: both;
+  }
+
+  /* line 330, ../sass/pages/_admin.scss */
+  .tags, .card-preview {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
 /* line 1, ../sass/pages/_donation.scss */
 form.donation {
   margin: 20px 0 50px;

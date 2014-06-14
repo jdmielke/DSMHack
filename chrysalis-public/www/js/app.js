@@ -27,6 +27,10 @@ app.config(function($routeProvider) {
 		controller: "AdminMessages",
 		templateUrl: "pages/adminMessages.html"
 	})
+	.when("/ecard/:cardid", {
+		controller: "Ecard",
+		templateUrl: "pages/ecard.html"
+	})
 	.otherwise({
 		redirectTo:  "/"
 	});
@@ -41,6 +45,14 @@ app.config(function($routeProvider) {
 .factory("MessageList", ['$resource', function($resource){
 	return $resource("api/messages", {}, {
 		query: {method: "GET", isArray:true}
+	});
+}])
+
+.factory("CardService", ['$resource', function($resource){
+	return $resource("api/cards/:id", {
+		id: "@cardid"
+	}, {
+		query: {method: "GET"}
 	});
 }])
 
@@ -123,6 +135,12 @@ app.config(function($routeProvider) {
 .controller("Donation", ["$scope", "$routeParams",
 	function($scope, $routeParams) {
 		$scope.cardid = $routeParams.cardid;
+	}
+])
+
+.controller("Ecard", ["$scope", "$routeParams", "CardService",
+	function($scope, $routeParams, CardService) {
+		$scope.card = CardService.query({id: $routeParams.cardid});
 	}
 ])
 

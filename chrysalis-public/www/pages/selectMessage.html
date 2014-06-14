@@ -5,9 +5,8 @@
 	<button class="button" ng-click="setCustomMessage()">create card</button>
 </div>
 
-<form action="" class="stock-messages">
-	<label ng-repeat="message in messages" class="message" for="{{message.uuid}}" ng-click="setSelectMessage(message)">
-		<input type="checkbox" id="{{message.uuid}}">
+<div class="messages">
+	<a href="" ng-repeat="message in messages" ng-click="setSelectMessage(message)">
 		{{message.text}}
-	</label>
-</form>
+	</a>
+</div>
