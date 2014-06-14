@@ -158,8 +158,9 @@ app.config(function($routeProvider) {
 	
 }])
 
-.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$route",
-	function($scope, MessageList, Tags, $http, $route) {
+.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$location", "$q",
+	function($scope, MessageList, Tags, $http, $location, $q) {
+		$scope.showAdminTabs = true;
 		$scope.selection = [];
 		$scope.newMessage = {};
 		$scope.tag = {
@@ -179,22 +180,32 @@ app.config(function($routeProvider) {
 
 		$scope.createNewMessage = function(){
 			$http.post("api/messages", $scope.newMessage).success(function(data) {
-				
+				$location.path('/admin/messages');
 			});
 		};
-		$scope.toggleSelection = function(messageId) {
-			alert(JSON.stringify($scope.selection));
-		    var idx = $scope.selection.indexOf(messageId);
-		    alert(idx);
+		$scope.toggleSelection = function(message) {
+		    var idx = $scope.selection.indexOf(message._id);
 		    if (idx > -1) {
 		      $scope.selection.splice(idx, 1);
 		    } else {
-		      $scope.selection.push(messageId);
+		      $scope.selection.push(message._id);
 		    }
 		  };
 
 		$scope.deleteSelectedMessages = function(){
-			alert(JSON.stringify($scope.selection));
+
+    		var promises = [];
+    		var defer = $q.defer();
+
+			angular.forEach($scope.selection, function(messageIdToDelete) {
+				promises.push($http.get("api/messages/delete/" + messageIdToDelete));
+			});
+
+			$q.all(promises).then(function(){
+				$location.path('/admin/messages');	
+			});
+
+			return defer;
 		};
 	}]
 );
