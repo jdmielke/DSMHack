@@ -90,6 +90,7 @@ app.get('/secure', ensureAuthenticated, function(req, res){
 app.get("/api/images/list", api.list);
 app.get("/api/tags", endpoints.tagGet);
 app.get("/api/tags/:id", endpoints.tagIdGet);
+app.get("/api/tags/name/:name", endpoints.tagNameGet);
 app.get("/api/cards", endpoints.cardGet);
 app.get("/api/cards/:id", endpoints.cardIdGet);
 app.get("/api/images", endpoints.imageGet);
