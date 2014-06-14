@@ -38,7 +38,7 @@ a.submit {
 	}
 	.message {
 		float: right;
-		width: 400px;
+		width: 40%;
 		background: $white;
 		position: relative;
 		z-index: 90;
@@ -62,7 +62,7 @@ a.submit {
 		clear: both;
 		background: $green;
 		float: right;
-		width: 400px;
+		width: 40%;
 		height: auto;
 		position: relative;
 		z-index: 90;
@@ -90,7 +90,28 @@ a.submit {
 	}
 }
 
+.checked {
+	.has-error {
+		border: 1px solid $pink;
+	}
 
+	&.ng-invalid .error {
+		display: block;
+		font-size: 85%;
+	}
+}
+
+.text {
+	@include clearfix();
+	h1 {
+		display: inline-block;
+		max-width: 75%;
+	}
+
+	.button {
+		float: right;
+	}
+}
 
 /* Media Quieres */
 @media all and (max-width:980px) {
@@ -125,7 +146,6 @@ a.submit {
 					width: 94%;
 				}
 			}
-			
 		}
 		a.submit {
 			display: block;

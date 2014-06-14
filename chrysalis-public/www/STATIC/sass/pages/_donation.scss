@@ -7,6 +7,14 @@ form.donation {
 		margin-right: 30px;
 		color: $green;
 	}
+	label {
+		left: auto;
+		top: auto;
+		display: block;
+		width: auto;
+		height: auto;
+		position: static;
+	}
 }
 .how-to-donate {
 	clear: both;

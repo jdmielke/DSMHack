@@ -4,7 +4,8 @@ var express = require('express'),
   LocalStrategy = require('passport-local').Strategy,
   mongoose = require("mongoose"),
   bcrypt = require("bcrypt-nodejs"),
-  fs = require("fs");
+  fs = require("fs"),
+  path = require("path");
 
 var format = require('util').format;
 
@@ -17,7 +18,7 @@ mongoose.connect("54.187.178.36:27017/chrysalis");
 var db = mongoose.connection;
 
 var models = require(__dirname + "/server/Model/models")(mongoose);
-var endpoints = require(__dirname + "/server/endpoints")(models);
+var endpoints = require(__dirname + "/server/endpoints")(models, fs, path);
 var AdminModel = require(__dirname + "/server/Model/Admin")(mongoose);
 
 
@@ -112,7 +113,9 @@ app.post("/api/tags", endpoints.tagPost);
 app.get("/api/messages", api.messages);
 
 app.post("/api/images/upload", function(req, res){
-  var newImage = new models.image(JSON.parse(JSON.parse(unescape(req.body.data))));
+  var data = req.body;
+  data.extension = "." + req.files.imageUpload.name.split(".").pop();
+  var newImage = new models.image(req.body);
   newImage.save(function (err) {
     if (err) {
       return console.log(err);
@@ -124,6 +127,7 @@ app.post("/api/images/upload", function(req, res){
             console.log(err);
           }
           return res.send(newImage);
+          // should do a redirect to the admin single image view
         });
       });
     }
@@ -145,24 +149,26 @@ app.get('/api/cards/send/:id', function(req, res){
 
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
-      var text = "Here is the link to your ecard:";
+      var text = "Here is the link to your ecard: " +
+        "<a href=\"http://54.187.178.36:8080/#/ecard/" +
+        req.params.id + "\">Chrysalis ecard</a>";
 
       var mailOptions = {
         from: senderEmail,
         to: toEmail,
         cc: senderEmail,
         subject: subject,
-        text: text
-        }
+        html: text
+      };
 
         transport.sendMail(mailOptions, function(error, response){
           if(error){
             res.statusCode = 500;
             res.end();
           }else{
-            res.end();
+            res.redirect("/#/sent");
           }
-        });;
+        });
    } else {
     return console.error(err);
   }
@@ -172,6 +178,6 @@ app.get('/api/cards/send/:id', function(req, res){
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/admin.html')
+  res.redirect('/admin.html');
 }
 

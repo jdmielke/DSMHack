@@ -16,13 +16,24 @@ app.config(function($routeProvider) {
 		controller: "CardHoriz",
 		templateUrl: "pages/card-horiz.html"
 	})
-	.when("/donation", {
+	.when("/donation/:cardid", {
 		controller: "Donation",
 		templateUrl: "pages/donation.html"
+	})
+	.when("/sent", {
+		templateUrl: "pages/sent.html"
 	})
 	.when("/admin/messages", {
 		controller: "AdminMessages",
 		templateUrl: "pages/adminMessages.html"
+	})
+	.when("/ecard/:cardid", {
+		controller: "Ecard",
+		templateUrl: "pages/ecard.html"
+	})
+	.when("/admin/image/upload", {
+		controller: "Upload",
+		templateUrl: "pages/imageUpload.html"
 	})
 	.otherwise({
 		redirectTo:  "/"
@@ -41,6 +52,14 @@ app.config(function($routeProvider) {
 	});
 }])
 
+.factory("CardService", ['$resource', function($resource){
+	return $resource("api/cards/:id", {
+		id: "@cardid"
+	}, {
+		query: {method: "GET"}
+	});
+}])
+
 .factory("Card", function() {
 	var card = {};
 	return card;
@@ -56,10 +75,10 @@ app.config(function($routeProvider) {
 	function($scope, ImageList, Card, Tags, $location) {
 		$scope.imageList = ImageList.query();
 		$scope.card = Card;
+		$scope.card.tag = {
+			name: "General Occasion"
+		};
 		Tags.query().$promise.then(function(tags) {
-			$scope.card.tag = {
-				name: "General Occasion"
-			};
 			tags.unshift($scope.card.tag);
 			$scope.tags = tags;
 		});
@@ -73,7 +92,7 @@ app.config(function($routeProvider) {
 			return function(image) {
 				var contains = false;
 
-				if ($scope.card.tag == "" || $scope.card.tag.name == "General Occasion") {
+				if ($scope.card.tag == "" || $scope.card.tag && $scope.card.tag.name == "General Occasion") {
 					return true;
 				}
 
@@ -105,16 +124,77 @@ app.config(function($routeProvider) {
 	}
 ])
 
-.controller("CardHoriz", ["$scope", "Card",
-	function($scope, Card) {
+.controller("CardHoriz", ["$scope", "Card", "$http", "$location",
+	function($scope, Card, $http, $location) {
 		$scope.card = Card;
+		$scope.checked = false;
+
+		$scope.saveCard = function() {
+			$scope.checked = true;
+			if ($scope.cardinfo.$valid) {
+				$http.post("api/cards", $scope.card).success(function(data) {
+					$location.path("/donation/" + data._id);
+				});
+			}
+		};
 	}
 ])
 
-.controller("AdminMessages", ["$scope", "MessageList", "Tags",
-	function($scope, MessageList, Tags) {
-		$scope.tag = "";
-		$scope.tags = Tags.query();
+.controller("Donation", ["$scope", "$routeParams",
+	function($scope, $routeParams) {
+		$scope.cardid = $routeParams.cardid;
+		$scope.paypal = "5VYV4XB5D3NV2";
+		$scope.returnURL = "http://" + window.location.host + "/api/cards/send/" + $scope.cardid;
+	}
+])
+
+.controller("Ecard", ["$scope", "$routeParams", "CardService",
+	function($scope, $routeParams, CardService) {
+		$scope.card = CardService.query({id: $routeParams.cardid});
+	}
+])
+
+.controller("Upload", ["$scope", function($scope) {
+	
+}])
+
+.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$route",
+	function($scope, MessageList, Tags, $http, $route) {
+		$scope.selection = [];
+		$scope.newMessage = {};
+		$scope.tag = {
+			name: "General Occasion"
+		};
+		Tags.query().$promise.then(function(tags) {
+			tags.unshift($scope.tag);
+			$scope.tags = tags;
+		});
 		$scope.messages = MessageList.query();
+
+		$scope.showNewMessageDiv = false;
+
+		$scope.showNewMessage = function(){
+			$scope.showNewMessageDiv = true;
+		};
+
+		$scope.createNewMessage = function(){
+			$http.post("api/messages", $scope.newMessage).success(function(data) {
+				
+			});
+		};
+		$scope.toggleSelection = function(messageId) {
+			alert(JSON.stringify($scope.selection));
+		    var idx = $scope.selection.indexOf(messageId);
+		    alert(idx);
+		    if (idx > -1) {
+		      $scope.selection.splice(idx, 1);
+		    } else {
+		      $scope.selection.push(messageId);
+		    }
+		  };
+
+		$scope.deleteSelectedMessages = function(){
+			alert(JSON.stringify($scope.selection));
+		};
 	}]
 );
