@@ -133,6 +133,15 @@ module.exports = function(models, fs, path){
         }
       });
     },
+    tagNameGet: function (req, res){
+      return models.tag.find({"name" : req.params.name}, function (err, data) {
+        if (!err) {
+          return res.send(data);
+        } else {
+          return console.error(err);
+        }
+      });
+    },
     tagGet: function(req, res){
       return models.tag
         .find("")

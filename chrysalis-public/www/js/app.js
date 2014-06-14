@@ -162,7 +162,7 @@ app.config(function($routeProvider) {
 	function($scope, MessageList, Tags, $http, $location, $q) {
 		$scope.showAdminTabs = true;
 		$scope.selection = [];
-		$scope.newMessage = {};
+		$scope.newTag = {};
 		$scope.tag = {
 			name: "General Occasion"
 		};
@@ -223,6 +223,43 @@ app.config(function($routeProvider) {
 				});
 				return contains;
 			};
+		};
+
+		$scope.removeTag = function(message, tag){
+			var idx = message.tags.indexOf(tag);
+			if (idx > -1) {
+				message.tags.splice(idx, 1);
+				$http.post("api/messages/update/" + message._id, message).success(function(data) {
+					$location.path('/admin/messages');
+				});
+			}
+		};
+
+		$scope.addNewTag = function(message){
+			if(!message.tags){
+				message.tags = [];
+			}
+			$http.get("api/tags/name/" + message.newTagName)
+				.success(function(data){
+					if(data.length <= 0){
+						var newTag = {"name" : message.newTagName};
+						$http.post("api/tags", newTag).success(function(data) {
+							message.tags.push(data);
+							$http.post("api/messages/update/" + message._id, message).success(function(data) {
+								$location.path('/admin/messages');
+							});
+						});
+					}else{
+						var idx = message.tags.indexOf(data[0]);
+						if (idx <= -1) {
+							message.tags.push(data[0]);
+							$http.post("api/messages/update/" + message._id, message).success(function(data) {
+								$location.path('/admin/messages');
+							});
+						}
+					}
+				});
+			$location.path('/admin/messages');
 		};
 	}]
 );

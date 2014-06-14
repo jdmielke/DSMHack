@@ -20,7 +20,7 @@
     	ng-click="toggleSelection(message)">
 	<div class="message-text">
 		<p>{{message.text}}</p>
-		<a ng-repeat="tag in message.tags" href="#" class="tag">{{tag.name}}</a>
-		<a href="#" class="add-tag">New tag</a><input type="text" >
+		<a ng-repeat="tag in message.tags" href="#" class="tag" ng-click="removeTag(message, tag)">{{tag.name}}</a>
+		<a href="#" class="add-tag" ng-click="addNewTag(message)">New tag</a><input ng-model="message.newTagName" type="text" >
 	</div>
 </div>
