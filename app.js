@@ -16,9 +16,9 @@ var api = require("./server/api");
 mongoose.connect("54.187.178.36:27017/chrysalis");
 var db = mongoose.connection;
 
-var models = require("./server/model/models")(mongoose);
-var endpoints = require("./server/endpoints")(models);
-var AdminModel = require("./server/model/Admin")(mongoose);
+var models = require(__dirname + "/server/Model/models")(mongoose);
+var endpoints = require(__dirname + "/server/endpoints")(models);
+var AdminModel = require(__dirname + "/server/Model/Admin")(mongoose);
 
 
 var transport = nodemailer.createTransport("Gmail",{
