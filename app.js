@@ -146,7 +146,7 @@ app.get('/api/cards/send/:id', function(req, res){
 
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
-      var text = "Here is the link to your ecard:" +
+      var text = "Here is the link to your ecard: " +
         "<a href=\"http://54.187.178.36:8080/#/ecard/" +
         req.params.id + "\">Chrysalis ecard</a>";
 

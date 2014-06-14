@@ -123,11 +123,15 @@ app.config(function($routeProvider) {
 .controller("CardHoriz", ["$scope", "Card", "$http", "$location",
 	function($scope, Card, $http, $location) {
 		$scope.card = Card;
+		$scope.checked = false;
 
 		$scope.saveCard = function() {
-			$http.post("api/cards", $scope.card).success(function(data) {
-				$location.path("/donation/" + data._id);
-			});
+			$scope.checked = true;
+			if ($scope.cardinfo.$valid) {
+				$http.post("api/cards", $scope.card).success(function(data) {
+					$location.path("/donation/" + data._id);
+				});
+			}
 		};
 	}
 ])

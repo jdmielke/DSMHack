@@ -133,7 +133,8 @@ form label {
 form input {
   float: left;
   margin-right: 20px;
-  padding: 10px; }
+  padding: 10px;
+  border: 1px solid #aaa; }
 
 /* ////////////////////////////////////////////// Layout styles */
 .header-top {
@@ -392,6 +393,12 @@ a.submit {
   .card.vert .message, .card.vert .logo-bar {
     float: none;
     width: 100%; }
+
+.checked .has-error {
+  border: 1px solid #f3776f; }
+.checked.ng-invalid .error {
+  display: block;
+  font-size: 85%; }
 
 .text {
   zoom: 1; }
