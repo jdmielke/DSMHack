@@ -31,6 +31,10 @@ app.config(function($routeProvider) {
 		controller: "Ecard",
 		templateUrl: "pages/ecard.html"
 	})
+	.when("/admin/image/upload", {
+		controller: "Upload",
+		templateUrl: "pages/imageUpload.html"
+	})
 	.otherwise({
 		redirectTo:  "/"
 	});
@@ -123,11 +127,15 @@ app.config(function($routeProvider) {
 .controller("CardHoriz", ["$scope", "Card", "$http", "$location",
 	function($scope, Card, $http, $location) {
 		$scope.card = Card;
+		$scope.checked = false;
 
 		$scope.saveCard = function() {
-			$http.post("api/cards", $scope.card).success(function(data) {
-				$location.path("/donation/" + data._id);
-			});
+			$scope.checked = true;
+			if ($scope.cardinfo.$valid) {
+				$http.post("api/cards", $scope.card).success(function(data) {
+					$location.path("/donation/" + data._id);
+				});
+			}
 		};
 	}
 ])
@@ -145,6 +153,10 @@ app.config(function($routeProvider) {
 		$scope.card = CardService.query({id: $routeParams.cardid});
 	}
 ])
+
+.controller("Upload", ["$scope", function($scope) {
+	
+}])
 
 .controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$route",
 	function($scope, MessageList, Tags, $http, $route) {

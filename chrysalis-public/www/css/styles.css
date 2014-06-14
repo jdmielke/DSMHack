@@ -89,7 +89,8 @@ button, .button, .submit {
   font-weight: bold;
   font-size: 115%;
   text-decoration: none;
-  text-transform: lowercase; }
+  text-transform: lowercase;
+  margin: 0; }
   button:hover, button:focus, .button:hover, .button:focus, .submit:hover, .submit:focus {
     background-color: #fcbb35; }
 
@@ -133,7 +134,8 @@ form label {
 form input {
   float: left;
   margin-right: 20px;
-  padding: 10px; }
+  padding: 10px;
+  border: 1px solid #aaa; }
 
 /* ////////////////////////////////////////////// Layout styles */
 .header-top {
@@ -392,6 +394,12 @@ a.submit {
   .card.vert .message, .card.vert .logo-bar {
     float: none;
     width: 100%; }
+
+.checked .has-error {
+  border: 1px solid #f3776f; }
+.checked.ng-invalid .error {
+  display: block;
+  font-size: 85%; }
 
 .text {
   zoom: 1; }
@@ -686,6 +694,11 @@ a.submit {
     float: none;
     width: 100%;
     margin-bottom: 20px; } }
+.upload input[type="file"] {
+  border: none; }
+.upload input {
+  display: block; }
+
 form.donation {
   margin: 20px 0 50px;
   overflow: hidden; }

@@ -113,7 +113,9 @@ app.post("/api/tags", endpoints.tagPost);
 app.get("/api/messages", api.messages);
 
 app.post("/api/images/upload", function(req, res){
-  var newImage = new models.image(JSON.parse(JSON.parse(unescape(req.body.data))));
+  var data = req.body;
+  data.extension = "." + req.files.imageUpload.name.split(".").pop();
+  var newImage = new models.image(req.body);
   newImage.save(function (err) {
     if (err) {
       return console.log(err);
@@ -125,6 +127,7 @@ app.post("/api/images/upload", function(req, res){
             console.log(err);
           }
           return res.send(newImage);
+          // should do a redirect to the admin single image view
         });
       });
     }
@@ -146,7 +149,7 @@ app.get('/api/cards/send/:id', function(req, res){
 
 
       var subject = senderName + " has made a donation to Chrysalis in your name!";
-      var text = "Here is the link to your ecard:" +
+      var text = "Here is the link to your ecard: " +
         "<a href=\"http://54.187.178.36:8080/#/ecard/" +
         req.params.id + "\">Chrysalis ecard</a>";
 

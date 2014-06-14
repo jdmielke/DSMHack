@@ -1,27 +1,29 @@
 <h1>Send A Card</h1>
+<form name="cardinfo" ng-class="{'checked': checked}">
+	<div class="error">Please enter a To: and From: name with valid email addresses.</div>
 <div class="to-from">
 	<div class="information">
 		<div class="reciever">
 			<p>To:</p>
-			<form>
+
 				<label for="first-name">First Name</label>
-				<input type="text" placeholder="First Name" class="first-name"  ng-model="card.to"> 
+				<input type="text" placeholder="First Name" name="to" ng-model="card.to" required ng-class="{'has-error': !cardinfo.to.$valid}"> 
 				<label for="email">Email</label>
-				<input type="text" placeholder="Email" class="email" ng-model="card.toEmail">
-			</form>
+				<input type="email" placeholder="Email" name="toEmail" ng-model="card.toEmail" required ng-class="{'has-error': !cardinfo.toEmail.$valid}">
+
 		</div>
 		<div class="sender">
 			<p>From:</p>
 			<form>
 				<label for="first-name">First Name</label>
-				<input type="text" placeholder="First Name" class="first-name" ng-model="card.from">
+				<input type="text" placeholder="First Name" name="from" ng-model="card.from" required ng-class="{'has-error': !cardinfo.from.$valid}">
 				<label for="email">Email</label>
-				<input type="text" placeholder="Email" class="email" ng-model="card.fromEmail">
-			</form>
+				<input type="email" placeholder="Email" name="fromEmail" ng-model="card.fromEmail" required ng-class="{'has-error': !cardinfo.fromEmail.$valid}">
 		</div>
 	</div>
 	<a href="" class="submit" ng-click="saveCard()">I'm finished</a>
 </div>
+</form>
 <div class="card">
 	<div class="message">
 		<h2>{{card.to}},</h2>
