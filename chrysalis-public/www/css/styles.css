@@ -694,6 +694,13 @@ form.donation {
     font-size: 2em;
     margin-right: 30px;
     color: #b0ba25; }
+  form.donation label {
+    left: auto;
+    top: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    position: static; }
 
 .how-to-donate {
   clear: both; }
