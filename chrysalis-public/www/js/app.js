@@ -31,6 +31,10 @@ app.config(function($routeProvider) {
 		controller: "Ecard",
 		templateUrl: "pages/ecard.html"
 	})
+	.when("/admin/image/upload", {
+		controller: "Upload",
+		templateUrl: "pages/imageUpload.html"
+	})
 	.otherwise({
 		redirectTo:  "/"
 	});
@@ -149,6 +153,10 @@ app.config(function($routeProvider) {
 		$scope.card = CardService.query({id: $routeParams.cardid});
 	}
 ])
+
+.controller("Upload", ["$scope", function($scope) {
+	
+}])
 
 .controller("AdminMessages", ["$scope", "MessageList", "Tags",
 	function($scope, MessageList, Tags) {

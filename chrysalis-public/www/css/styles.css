@@ -89,7 +89,8 @@ button, .button, .submit {
   font-weight: bold;
   font-size: 115%;
   text-decoration: none;
-  text-transform: lowercase; }
+  text-transform: lowercase;
+  margin: 0; }
   button:hover, button:focus, .button:hover, .button:focus, .submit:hover, .submit:focus {
     background-color: #fcbb35; }
 
@@ -693,6 +694,11 @@ a.submit {
     float: none;
     width: 100%;
     margin-bottom: 20px; } }
+.upload input[type="file"] {
+  border: none; }
+.upload input {
+  display: block; }
+
 form.donation {
   margin: 20px 0 50px;
   overflow: hidden; }

@@ -316,3 +316,12 @@
 		margin-bottom: 20px;
 	}
 }
+
+.upload {
+	input[type="file"] {
+		border: none;
+	}
+	input {
+		display: block;
+	}
+}
