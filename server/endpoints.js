@@ -5,7 +5,7 @@ module.exports = function(models, fs, path){
         data.text = req.body.text;
         return data.save(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -19,7 +19,7 @@ module.exports = function(models, fs, path){
         data.published = req.body.published;
         return data.save(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -36,7 +36,7 @@ module.exports = function(models, fs, path){
         data.orientation = req.body.orientation;
         return data.save(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -56,7 +56,7 @@ module.exports = function(models, fs, path){
         data.status = req.body.status;
         return data.save(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -67,7 +67,7 @@ module.exports = function(models, fs, path){
       return models.tag.findById(req.params.id, function (err, data) {
         return data.remove(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -78,7 +78,7 @@ module.exports = function(models, fs, path){
       return models.message.findById(req.params.id, function (err, data) {
         return data.remove(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
@@ -88,19 +88,19 @@ module.exports = function(models, fs, path){
      imageDelete:  function(req, res){
       return models.image.findById(req.params.id, function (err, data) {
         if(!err && data){
-          var imageLocation = path.normalize(__dirname + "/../chrysalis-public/www/img/drawings/" + data.id + '.' + data.extension);
+          var imageLocation = path.normalize(__dirname + "/../chrysalis-public/www/img/drawings/" + data.id + "." + data.extension);
           return data.remove(function(err){
             if (!err) {
               if (fs.existsSync(imageLocation)) {
                 fs.unlink(imageLocation);
               }
-              return res.send('');
+              return res.send("");
             } else {
               return console.error(err);
             }
            });
         }else{
-          return res.send('');
+          return res.send("");
         }
       });
      },
@@ -108,7 +108,7 @@ module.exports = function(models, fs, path){
       return models.card.findById(req.params.id, function (err, data) {
         return data.remove(function(err){
           if (!err) {
-            return res.send('');
+            return res.send("");
           } else {
             return console.error(err);
           }
