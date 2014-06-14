@@ -207,5 +207,22 @@ app.config(function($routeProvider) {
 
 			return defer;
 		};
+
+		$scope.containsTag = function(tag) {
+			return function(message) {
+				var contains = false;
+
+				if ($scope.tag == "" || $scope.tag && $scope.tag.name == "General Occasion") {
+					return true;
+				}
+
+				angular.forEach(message.tags, function(messagetag) {
+					if (messagetag.name == $scope.tag.name) {
+						contains = true;
+					}
+				});
+				return contains;
+			};
+		};
 	}]
 );
