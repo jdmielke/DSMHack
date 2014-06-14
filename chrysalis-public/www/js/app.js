@@ -146,10 +146,43 @@ app.config(function($routeProvider) {
 	}
 ])
 
-.controller("AdminMessages", ["$scope", "MessageList", "Tags",
-	function($scope, MessageList, Tags) {
-		$scope.tag = "";
-		$scope.tags = Tags.query();
+.controller("AdminMessages", ["$scope", "MessageList", "Tags", "$http", "$route",
+	function($scope, MessageList, Tags, $http, $route) {
+		$scope.selection = [];
+		$scope.newMessage = {};
+		$scope.tag = {
+			name: "General Occasion"
+		};
+		Tags.query().$promise.then(function(tags) {
+			tags.unshift($scope.tag);
+			$scope.tags = tags;
+		});
 		$scope.messages = MessageList.query();
+
+		$scope.showNewMessageDiv = false;
+
+		$scope.showNewMessage = function(){
+			$scope.showNewMessageDiv = true;
+		};
+
+		$scope.createNewMessage = function(){
+			$http.post("api/messages", $scope.newMessage).success(function(data) {
+				
+			});
+		};
+		$scope.toggleSelection = function(messageId) {
+			alert(JSON.stringify($scope.selection));
+		    var idx = $scope.selection.indexOf(messageId);
+		    alert(idx);
+		    if (idx > -1) {
+		      $scope.selection.splice(idx, 1);
+		    } else {
+		      $scope.selection.push(messageId);
+		    }
+		  };
+
+		$scope.deleteSelectedMessages = function(){
+			alert(JSON.stringify($scope.selection));
+		};
 	}]
 );

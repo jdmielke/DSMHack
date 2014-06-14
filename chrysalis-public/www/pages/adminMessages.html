@@ -1,23 +1,26 @@
 <h1>Messages</h1>
 
-<div class="controls">
-	<label for="">Filter: </label>
-	<select name="" id="" ng-model="tag" ng-options="tag as tag for tag in tags" ></select>
-	<a href="#">delete</a>
-	<a href="#">unpublish</a>
-	<button class="button">new message</button>
+<div class="options">
+	<p>Sort by</p>
+	<select name="" id="" ng-model="tag" ng-options="tag.name for tag in tags" ></select>
+	<a ng-click="deleteSelectedMessages()" href="#" class="delete">delete</a>
+	<a href="#" class="unpublish">un-publish</a>
+	<button ng-click="showNewMessage()" ng-show="!showNewMessageDiv" class="button">New Message</button>
+
+	<div ng-show="showNewMessageDiv" class="new-message">
+		<h2>New message</h2>
+		<textarea ng-model="newMessage.text"></textarea>
+		<a ng-click="createNewMessage()" href="#" class="button">Create Message</a>
+	</div>
 </div>
 
-<form action="" class="stock-messages">
-	<label ng-repeat="message in messages | filter:tag" class="message" for="{{message.uuid}}" >
-		<input type="checkbox" id="{{message.uuid}}">
-		{{message.text}}
-	
-		<div class="message-controls">
-			<strong>{{message.tag}}</strong>
-			<strong>new tag</strong>
-			<input type="text" placeholder="new tag name">
-		</div>
-	</label>
-
-</form>
+<div ng-repeat="message in messages" class="message">
+	<input type="checkbox" name="{{message_.id}}" 
+		ng-checked="selection.indexOf(message) > -1"
+    	ng-click="toggleSelection({{message._id}})">
+	<div class="message-text">
+		<p>{{message.text}}</p>
+		<a ng-repeat="tag in message.tags" href="#" class="tag">{{tag.name}}</a>
+		<a href="#" class="add-tag">New tag</a><input type="text" >
+	</div>
+</div>
