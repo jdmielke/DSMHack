@@ -1,4 +1,4 @@
-module.exports = function(models){
+module.exports = function(models, fs){
   return {
     tagUpdate:  function(req, res){
       return models.tag.findById(req.params.id, function (err, data) {
@@ -87,8 +87,19 @@ module.exports = function(models){
      },
      imageDelete:  function(req, res){
       return models.image.findById(req.params.id, function (err, data) {
+        var imageLocation = __dirname + "\\chrysalis-public\\www\\img\\drawings\\" + data.id + '.' + data.extension;
+        console.log(imageLocation);
         return data.remove(function(err){
           if (!err) {
+            console.log('Data Removed');
+            fs.exists(imageLocation, function(err, stat) {
+              if(err == null) {
+                  console.log('File exists');
+                  fs.unlink(imageLocation);
+              }else{
+                console.error(err);
+              }
+            });
             return res.send('');
           } else {
             return console.error(err);
