@@ -136,6 +136,7 @@ app.config(function($routeProvider) {
 	function($scope, $routeParams) {
 		$scope.cardid = $routeParams.cardid;
 		$scope.paypal = "5VYV4XB5D3NV2";
+		$scope.returnURL = "http://" + window.location.host + "/api/cards/send/" + $scope.cardid;
 	}
 ])
 
