@@ -15,9 +15,9 @@
 </div>
 
 <div ng-repeat="message in messages" class="message">
-	<input type="checkbox" name="{{message_.id}}" 
-		ng-checked="selection.indexOf(message) > -1"
-    	ng-click="toggleSelection({{message._id}})">
+	<input type="checkbox" name="{{message._id}}" 
+		ng-checked="selection.indexOf({{message._id}}) > -1"
+    	ng-click="toggleSelection(message)">
 	<div class="message-text">
 		<p>{{message.text}}</p>
 		<a ng-repeat="tag in message.tags" href="#" class="tag">{{tag.name}}</a>
