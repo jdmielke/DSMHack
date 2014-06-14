@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div ng-repeat="message in messages" class="message">
+<div ng-repeat="message in messages | filter:containsTag(tag)" class="message">
 	<input type="checkbox" name="{{message._id}}" 
 		ng-checked="selection.indexOf({{message._id}}) > -1"
     	ng-click="toggleSelection(message)">
